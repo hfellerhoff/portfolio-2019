@@ -10,7 +10,7 @@ import NavigationButtons from './components/NavigationButtons'
 import ProjectItem from './components/ProjectItem'
 
 import Sidebar from './components/Sidebar'
-import { JoinMe } from "./constants/Images";
+import { JoinMe, Arrow } from "./constants/Images";
 
 import './App.css';
 import './pages/Projects.css'
@@ -75,6 +75,17 @@ function App() {
                                 )}
                             </Spring>
                         </div>
+                        <Spring from={{ opacity: 0}}
+                                to={{ opacity: 1}}
+                                config={{ delay: 3000, duration: 1000}}>
+                            { props => (
+                                <div style={props}>
+                                    <Arrow/>
+                                    <p className='contact-text'>Contact Me!</p>
+                                </div>
+                            )}
+                        </Spring>
+
                     </div>
                 </ParallaxLayer>
                 <ParallaxLayer offset={1} speed={0}>
