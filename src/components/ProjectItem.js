@@ -30,7 +30,7 @@ function getListItems(items) {
     let listItems = [];
     Object.keys(items).map(key => {
         listItems.push(<li>{ items[key] }</li>);
-    })
+    });
     return listItems;
 }
 

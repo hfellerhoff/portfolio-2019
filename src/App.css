@@ -23,46 +23,64 @@ button:focus {
 
 h1 {
     color: #292929;
+    font-size: -webkit-calc(4vw + 4vh);
+    font-size: -moz-calc(4vw + 4vh);
     font-size: calc(4vw + 4vh);
 }
 
 h2 {
     color: #292929;
+    font-size: -webkit-calc(3.5vw + 3.5vh);
+    font-size: -moz-calc(3.5vw + 3.5vh);
     font-size: calc(3.5vw + 3.5vh);
 }
 
 h3 {
     color: #292929;
+    font-size: -webkit-calc(3vw + 3vh);
+    font-size: -moz-calc(3vw + 3vh);
     font-size: calc(3vw + 3vh);
 }
 
 h4 {
     color: #292929;
+    font-size: -webkit-calc(2.5vw + 2.5vh);
+    font-size: -moz-calc(2.5vw + 2.5vh);
     font-size: calc(2.5vw + 2.5vh);
 }
 
 h5 {
     color: #292929;
+    font-size: -webkit-calc(2vw + 2vh);
+    font-size: -moz-calc(2vw + 2vh);
     font-size: calc(2vw + 2vh);
     font-weight: normal;
 }
 
 h6 {
     color: #292929;
+    font-size: -webkit-calc(1.25vw + 1.25vh);
+    font-size: -moz-calc(1.25vw + 1.25vh);
     font-size: calc(1.25vw + 1.25vh);
     font-weight: normal;
 }
 
 p {
     color: #292929;
+    font-size: -webkit-calc(0.9vw + 0.9vh);
+    font-size: -moz-calc(0.9vw + 0.9vh);
     font-size: calc(0.9vw + 0.9vh);
 }
 
 span {
+    font-size: -webkit-calc(8pt + 0.5vw);
+    font-size: -moz-calc(8pt + 0.5vw);
     font-size: calc(8pt + 0.5vw)
 }
 
 li {
     margin-left: 20px;
+    font-size: -webkit-calc(0.75vw + 0.75vh);
+    font-size: -moz-calc(0.75vw + 0.75vh);
     font-size: calc(0.75vw + 0.75vh);
 }
