@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-import joinme from '../images/joinme.png'
-
 import '../pages/Projects.css'
 
 function ProjectItem({ project, index }) {
-
+    // const image = require(project.image);
     return (
         <div className="project-item container top">
-            <img src={joinme} className="project-item image" alt="Project Image"></img>
+            {project.image}
             <div className="project-item details-1">
                 <h5 className="project-item title">{project.title}</h5>
                 <h6 className="project-item subtitle">{project.subtitle}</h6>

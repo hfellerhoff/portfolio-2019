@@ -10,6 +10,7 @@ import NavigationButtons from './components/NavigationButtons'
 import ProjectItem from './components/ProjectItem'
 
 import Sidebar from './components/Sidebar'
+import { JoinMe } from "./constants/Images";
 
 import './App.css';
 import './pages/Projects.css'
@@ -20,7 +21,7 @@ function App() {
 
     const [projects, setProjects] = useState([
         {
-        image: '../images/joinme.png',
+        image: <JoinMe />,
         title: "JoinMe",
         subtitle: "Android App Prototype",
         description: "JoinMe is an Android app which allows users to connect with and meet up with friends \n" +
@@ -56,7 +57,7 @@ function App() {
                                     config={{ delay: 1000, duration: 1000}}>
                                     { props => (
                                         <div style={props}>
-                                            <h5>I'm Henry Fellerhoff - a computer science student passionate about diving into projects and learning new things.</h5>
+                                            <h5>I'm Henry Fellerhoff - a computer programmer passionate about diving into projects and learning new things.</h5>
                                         </div>
                                     )}
                                 </Spring>
