@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './About.css'
+import NavigationButtons from "../components/NavigationButtons";
 
 const About = (props) => {
     return (
@@ -12,10 +13,7 @@ const About = (props) => {
                 <h6>Computer Science (BS) + Vocal Performance (BA)</h6>
                 <h6><em>Projected Graduation 2022</em></h6>
                 <br />
-                <div className="home navigation-buttons">
-                    <button onClick={() => props.scrollTo(0)}><span>Home</span></button>
-                    <button onClick={() => props.scrollTo(2)}><span>Projects</span></button>
-                </div>
+                <NavigationButtons pages={['Home', 'Projects']} scrollTo={props.scrollTo}/>
             </div>
         </div>
     )

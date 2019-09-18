@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 
+import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
-
-import Sidebar from './components/Sidebar'
+import Contact from './pages/Contact'
 
 import './App.css';
-import './pages/Projects.css'
-import './pages/About.css'
-import './components/NavigationButtons.css'
 
 function App() {
 
@@ -36,7 +33,7 @@ function App() {
     return (
         <div className="app">
             <Sidebar scrollTo={handleScroll}/>
-            <Parallax ref={ref => (parallax = ref)} pages={3}>
+            <Parallax ref={ref => (parallax = ref)} pages={4}>
                 <ParallaxLayer offset={0} speed={0}>
                     <Home scrollTo={handleScroll}/>
                 </ParallaxLayer>
@@ -45,6 +42,9 @@ function App() {
                 </ParallaxLayer>
                 <ParallaxLayer offset={2} speed={0}>
                     <Projects projects={projects} scrollTo={handleScroll}/>
+                </ParallaxLayer>
+                <ParallaxLayer offset={3} speed={0}>
+                    <Contact scrollTo={handleScroll}/>
                 </ParallaxLayer>
             </Parallax>
         </div>

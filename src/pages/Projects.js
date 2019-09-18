@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectItem from "../components/ProjectItem";
+import NavigationButtons from "../components/NavigationButtons";
 
 const Projects = (props) => {
     const scrollTo = (page) => {
@@ -17,10 +18,7 @@ const Projects = (props) => {
                         ))
                     }
                 </div>
-                <div className="home navigation-buttons">
-                    <button onClick={() => scrollTo(0)}><span>Home</span></button>
-                    <button onClick={() => scrollTo(1)}><span>About</span></button>
-                </div>
+                <NavigationButtons pages={['Home', 'About']} scrollTo={scrollTo}/>
             </div>
         </div>
     );

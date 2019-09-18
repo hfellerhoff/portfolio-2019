@@ -4,6 +4,8 @@ import {Spring} from "react-spring/renderprops-universal";
 import "./Home.css"
 import arrow from '../images/arrow.png';
 
+import NavigationButtons from '../components/NavigationButtons'
+
 function Home(props) {
 
     const scrollTo = (page) => {
@@ -40,10 +42,7 @@ function Home(props) {
                         config={{ delay: 2000, duration: 1000}}>
                     { props => (
                         <div style={props}>
-                            <div className="home navigation-buttons">
-                                <button onClick={() => scrollTo(1)}><span>About</span></button>
-                                <button onClick={() => scrollTo(2)}><span>Projects</span></button>
-                            </div>
+                            <NavigationButtons pages={['About', 'Projects']} scrollTo={scrollTo}/>
                         </div>
                     )}
                 </Spring>
@@ -53,8 +52,8 @@ function Home(props) {
                     config={{ delay: 3000, duration: 1000}}>
                 { props => (
                     <div style={props}>
-                        <img src={arrow} className='arrow-image' alt='Arrow' />
-                        <p className='contact-text'>Contact Me!</p>
+                        <img src={arrow} className='home arrow-image' alt='Arrow' />
+                        <p className='home arrow-text'>Contact Me!</p>
                     </div>
                 )}
             </Spring>

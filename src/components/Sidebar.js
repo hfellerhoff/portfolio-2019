@@ -9,7 +9,7 @@ const Sidebar = (props) => {
     return (
         <div className="sidebar container">
             <div className="sidebar upper">
-                <img src={logo} className="sidebar-icon logo" alt='Logo' onClick={() => props.scrollTo(2)}/>
+                <img src={logo} className="sidebar-icon logo" alt='Logo' onClick={() => props.scrollTo(3)}/>
             </div>
             <div className="sidebar lower">
                 <a href="https://www.linkedin.com/in/henry-fellerhoff-b43365174/" target="_blank" rel='noopener noreferrer'>

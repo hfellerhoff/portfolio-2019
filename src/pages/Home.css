@@ -4,94 +4,52 @@
     Light Gray:     #636466
  */
 
-/* --- Main Homepage --- */
-
 .home.container {
     min-height: 100vh;
-    /*background: linear-gradient(white 80%, rgb(225, 250, 250));*/
-    background: linear-gradient(to right, #EEEEEE, #EEEEEE);
+    background: #EEEEEE;
 }
 
-.content {
-    padding: 0px 0px 0px 20px;
-    display: flex;
-    flex-flow: column;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 80%;
-    height: auto;
-}
-
-.arrow-image {
-    position: absolute;
-    /*width: 70px;*/
-    /*height: 70px;*/
+.home.arrow-image {
     width: calc(4vw + 4vh);
     height: calc(4vw + 4vh);
 }
 
-.contact-text {
-    display: inline-block;
+.home.arrow-text {
     position: absolute;
-    font-size: calc(1vw + 1vh);
 }
 
 /*min-width: 1000px*/
 @media screen and (min-aspect-ratio: 1/1) {
-    .content {
-        text-align: left;
-    }
-
     .home.text-container {
         margin-bottom: 20px;
     }
 
-    .arrow-image {
+    .home.arrow-image {
         top: 26px;
         right: 77px;
     }
 
-    .contact-text {
-        /*top: 96px;*/
-        /*right: 92px;*/
+    .home.arrow-text {
         top: calc(26px + (4vw + 4vh));
         right: calc(23px + (4vw + 4vh));
-        font-size: 20px;
     }
 }
 
 @media screen and (max-width: 700px) {
-    .contact-text {
-        /*left: 106px;*/
-        /*top: 134px;*/
+    .home.arrow-text {
         top: calc(26px + (4vw + 4vh));
         right: calc(33px + (4vw + 4vh));
-        font-size: 16px;
     }
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
-    .content {
-        text-align: center;
-        align-content: center;
-        align-items: center;
-        justify-items: center;
-        width: 90%;
-        padding-top: 48px;
-    }
-
-    .arrow-image {
+    .home.arrow-image {
         left: 26px;
         top: 77px;
-        transform: rotate(-90deg);
     }
 
-    .contact-text {
-        /*left: 106px;*/
-        /*top: 134px;*/
+    .home.arrow-text {
         left: calc(31px + (4vw + 4vh));
         top: calc(67px + (4vw + 4vh));
-        font-size: 14px;
     }
 }
