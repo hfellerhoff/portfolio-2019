@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
+import { ContactArrow, HomeArrow } from "./pages/Arrows";
 
 import './App.css';
 
@@ -35,6 +36,12 @@ function App() {
             <Sidebar scrollTo={handleScroll}/>
             <Parallax ref={ref => (parallax = ref)} pages={4}>
                 <ParallaxLayer offset={0} speed={0}>
+                    <div className='home container' />
+                </ParallaxLayer>
+                <ParallaxLayer offset={0} speed={3}>
+                    <HomeArrow />
+                </ParallaxLayer>
+                <ParallaxLayer offset={0} speed={0}>
                     <Home scrollTo={handleScroll}/>
                 </ParallaxLayer>
                 <ParallaxLayer offset={1} speed={0}>
@@ -42,6 +49,12 @@ function App() {
                 </ParallaxLayer>
                 <ParallaxLayer offset={2} speed={0}>
                     <Projects projects={projects} scrollTo={handleScroll}/>
+                </ParallaxLayer>
+                <ParallaxLayer offset={3} speed={0}>
+                    <div className='contact container' />
+                </ParallaxLayer>
+                <ParallaxLayer offset={3} speed={10}>
+                    <ContactArrow/>
                 </ParallaxLayer>
                 <ParallaxLayer offset={3} speed={0}>
                     <Contact scrollTo={handleScroll}/>

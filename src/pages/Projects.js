@@ -10,7 +10,6 @@ const Projects = (props) => {
     return (
         <div className="projects container">
             <div className="projects content">
-                <h2 className='projects title'>Projects.</h2>
                 <div>
                     {
                         props.projects.map((project, index) => (

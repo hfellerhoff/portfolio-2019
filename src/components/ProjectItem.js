@@ -4,22 +4,30 @@ import '../pages/Projects.css'
 
 function ProjectItem({ project: {filename, title, subtitle, description, technologies, tools} }) {
     return (
-        <div className="project-item container top">
-            <img src={require(`../images/${filename.toLowerCase()}`)} className='project-item image' alt={title} />
-            <div className="project-item details-1">
-                <h5 className="project-item title">{title}</h5>
-                <h6 className="project-item subtitle">{subtitle}</h6>
-                <p className="project-item description">{description}</p>
+        <div className="project-item container">
+            <div className='project-item header'>
+                <h2>Projects.</h2>
             </div>
-            <div className="project-item details-2">
-                <div style={{flex: 1}}>
-                    <h6 className="project-item list-header">Technologies</h6>
-                    <ul>{ getListItems(technologies) }</ul>
-                </div>
-                <div style={{flex: 1}}>
-                    <h6 className="project-item list-header">Tools</h6>
-                    <ul>{ getListItems(tools) }</ul>
-                </div>
+            <div className='project-item image-container'>
+                <img className='project-item image' src={require(`../images/${filename.toLowerCase()}`)} alt={title} />
+            </div>
+            <div className="project-item title">
+                <h5>{title}</h5>
+                <h6 >{subtitle}</h6>
+            </div>
+            {/*<div className="project-item subtitle">*/}
+            {/*    */}
+            {/*</div>*/}
+            <div className="project-item description">
+                <p>{description}</p>
+            </div>
+            <div className="project-item list-header technologies">
+                <h6>Technologies</h6>
+                <ul>{ getListItems(technologies) }</ul>
+            </div>
+            <div className="project-item list-header tools">
+                <h6>Tools</h6>
+                <ul>{ getListItems(tools) }</ul>
             </div>
         </div>
     )

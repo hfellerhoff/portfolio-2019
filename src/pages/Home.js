@@ -13,7 +13,6 @@ function Home(props) {
     };
 
     return (
-        <div className="home container">
             <div className="home content">
                 <div className="home text-container">
                     <Spring
@@ -47,18 +46,11 @@ function Home(props) {
                     )}
                 </Spring>
             </div>
-            <Spring from={{ opacity: 0}}
-                    to={{ opacity: 1}}
-                    config={{ delay: 3000, duration: 1000}}>
-                { props => (
-                    <div style={props}>
-                        <img src={arrow} className='home arrow-image' alt='Arrow' />
-                        <p className='home arrow-text'>Contact Me!</p>
-                    </div>
-                )}
-            </Spring>
-        </div>
     )
 }
+
+{/*<div className="home container">*/}
+{/*</div>*/}
+
 
 export default Home;
