@@ -97,15 +97,7 @@
 }
 
 @media screen and (max-width: 500px){
-    .contact.arrow-image.resume {
-        opacity: 0;
-    }
-
-    .contact.arrow-text-container.resume {
-        opacity: 0;
-    }
-
-    .contact.arrow-text.resume {
+    .contact.social {
         opacity: 0;
     }
 }

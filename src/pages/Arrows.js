@@ -7,11 +7,11 @@ import {Spring} from "react-spring/renderprops-universal";
 export const ContactArrow = (props) => {
     return (
         <div>
-            <img src={arrow} className='contact arrow-image' alt='Arrow'/>
-            <div className='contact arrow-text-container'>
-                <p className='contact arrow-text'>LinkedIn</p>
-                <p className='contact arrow-text'>+</p>
-                <p className='contact arrow-text'>Github</p>
+            <img src={arrow} className='contact arrow-image social' alt='Arrow'/>
+            <div className='contact arrow-text-container social'>
+                <p className='contact arrow-text social'>LinkedIn</p>
+                <p className='contact arrow-text social'>+</p>
+                <p className='contact arrow-text social'>Github</p>
             </div>
         </div>
     )
@@ -36,7 +36,7 @@ export const ResumeArrow = (props) => {
     return (
         <div style={props}>
             <img src={arrow} className='contact arrow-image resume' alt='Arrow'/>
-            <p className='contact arrow-text arrow-text-container resume'>Resume</p>
+            <p className='contact arrow-text arrow-text-container resume'>Resume!</p>
         </div>
     )
 };
