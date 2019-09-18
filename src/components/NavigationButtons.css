@@ -3,7 +3,7 @@
     background: none;
     border-radius: 15px;
     height: calc(30px + (2vw + 2vh));
-    width: calc(150px + (4vw + 4vh));
+    /*width: calc(150px + (4vw + 4vh));*/
     max-height: 50px;
     max-width: 230px;
     color: #292929;
@@ -20,28 +20,44 @@
 .navigation-buttons {
     display: flex;
     align-items: center;
+    justify-content: start;
 }
 
 .navigation-buttons button {
-    padding: 0px 80px;
 }
 
 @media screen and (min-aspect-ratio: 1/1) {
     .navigation-buttons {
+        width: 80vw;
+        max-width: 600px;
         flex-direction: row;
     }
 
     .navigation-buttons button {
         margin: 0px 10px 0px 0px;
+        flex: 1
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .navigation-buttons button {
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navigation-buttons button {
     }
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
     .navigation-buttons {
         flex-direction: column;
+        width: 60vw;
+        max-width: 400px;
     }
 
     .navigation-buttons button {
         margin: 10px 0px 0px 0px;
+        width: 100%;
     }
 }

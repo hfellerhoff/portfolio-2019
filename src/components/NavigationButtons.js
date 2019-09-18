@@ -27,7 +27,7 @@ function NavigationButtons(props) {
     });
 
     return (
-        <div className="home navigation-buttons">
+        <div className="navigation-buttons">
             {buttons}
         </div>
     )
