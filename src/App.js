@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
-import { ContactArrow, HomeArrow } from "./pages/Arrows";
+import { ContactArrow, HomeArrow, ResumeArrow } from "./pages/Arrows";
 
 import './App.css';
 
@@ -55,6 +55,7 @@ function App() {
                 </ParallaxLayer>
                 <ParallaxLayer offset={3} speed={10}>
                     <ContactArrow/>
+                    <ResumeArrow/>
                 </ParallaxLayer>
                 <ParallaxLayer offset={3} speed={0}>
                     <Contact scrollTo={handleScroll}/>

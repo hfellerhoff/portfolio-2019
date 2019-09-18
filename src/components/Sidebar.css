@@ -54,6 +54,10 @@
     .sidebar-icon {
         padding: 0px 0px 8px 0px;
     }
+
+    .sidebar-icon.upper {
+        padding: 16px 2px 0px 0px;
+    }
 }
 
 /**/
@@ -76,5 +80,9 @@
 
     .sidebar-icon.logo {
         padding-left: 8px;
+    }
+
+    .sidebar-icon.upper {
+        padding: 6px 0px 0px 4px;
     }
 }

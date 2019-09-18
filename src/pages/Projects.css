@@ -13,7 +13,7 @@
     display: grid;
     align-content: center;
     justify-items: center;
-    margin: 0 0 20px 0;
+    /*background: gray;*/
 }
 
 .project-item.header {
@@ -86,6 +86,7 @@
         grid-template-columns: auto auto auto;
         grid-column-gap: 20px;
         grid-row-gap: 15px;
+        margin: 0 0 20px 0;
     }
 
     .project-item.header {
