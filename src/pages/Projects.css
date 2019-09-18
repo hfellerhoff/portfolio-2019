@@ -9,7 +9,7 @@
 
 :root {
     --horizontal-image-size: calc(20vh + 15vw);
-    --vertical-image-size: calc(15vh + 20vw)
+    --vertical-image-size: calc(15vh + 20vw);
 }
 
 .project-item.container {

@@ -11,88 +11,124 @@ html, body {
     overflow: hidden;
 }
 
+li {
+    margin-left: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, ol, ul, li, a {
+    color: #292929;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+p, span, li {
+    font-size: 8px;
+}
+
+@media screen and (min-width: 320px) {
+    h1 {
+        font-size: calc(8.4375vw + 9px);
+    }
+
+    h2 {
+        font-size: calc(4.6875vw + 15px);
+    }
+
+    h3 {
+        font-size: calc(3.75vw + 12px);
+    }
+
+    h4 {
+        font-size: calc(3.125vw + 10px);
+    }
+
+    h5 {
+        font-size: calc(1.875vw + 10px);
+        font-weight: normal;
+    }
+
+    h6 {
+        font-size: calc(1.25vw + 8px);
+        font-weight: normal;
+    }
+
+    p, span, li {
+        font-size: calc(1.25vw + 4px);
+    }
+}
+
+@media screen and (min-width: 960px) {
+    h1 {
+        font-size: 90px;
+    }
+
+    h2 {
+        font-size: 60px;
+    }
+
+    h3 {
+        font-size: 48px;
+    }
+
+    h4 {
+        font-size: 40px;
+    }
+
+    h5 {
+        font-size: 28px;
+        font-weight: normal;
+    }
+
+    h6 {
+        font-size: 20px;
+        font-weight: normal;
+    }
+
+    p, span, li {
+        font-size: 16px;
+    }
+}
+
 /* --- Buttons --- */
 button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     cursor: pointer;
 }
 
-button:hover span {
+button:hover h6 {
     color: #EEEEEE;
 }
 
 button:focus {
     outline: none;
-}
-
-h1 {
-    color: #292929;
-    font-size: -webkit-calc(4vw + 4vh);
-    font-size: -moz-calc(4vw + 4vh);
-    font-size: calc(4vw + 4vh);
-}
-
-h2 {
-    color: #292929;
-    font-size: -webkit-calc(3.5vw + 3.5vh);
-    font-size: -moz-calc(3.5vw + 3.5vh);
-    font-size: calc(3.5vw + 3.5vh);
-}
-
-h3 {
-    color: #292929;
-    font-size: -webkit-calc(3vw + 3vh);
-    font-size: -moz-calc(3vw + 3vh);
-    font-size: calc(3vw + 3vh);
-}
-
-h4 {
-    color: #292929;
-    font-size: -webkit-calc(2.5vw + 2.5vh);
-    font-size: -moz-calc(2.5vw + 2.5vh);
-    font-size: calc(2.5vw + 2.5vh);
-}
-
-h5 {
-    color: #292929;
-    font-size: -webkit-calc(2vw + 2vh);
-    font-size: -moz-calc(2vw + 2vh);
-    font-size: calc(2vw + 2vh);
-    font-weight: normal;
-}
-
-h6 {
-    color: #292929;
-    font-size: -webkit-calc(1.25vw + 1.25vh);
-    font-size: -moz-calc(1.25vw + 1.25vh);
-    font-size: calc(1.25vw + 1.25vh);
-    font-weight: normal;
-}
-
-p {
-    color: #292929;
-    font-size: -webkit-calc(0.9vw + 0.9vh);
-    font-size: -moz-calc(0.9vw + 0.9vh);
-    font-size: calc(0.9vw + 0.9vh);
-}
-
-span {
-    color: #292929;
-    font-size: -webkit-calc(8pt + 0.5vw);
-    font-size: -moz-calc(8pt + 0.5vw);
-    font-size: calc(8pt + 0.5vw)
-}
-
-li {
-    margin-left: 20px;
-    font-size: -webkit-calc(0.75vw + 0.75vh);
-    font-size: -moz-calc(0.75vw + 0.75vh);
-    font-size: calc(0.75vw + 0.75vh);
-}
-
-a {
-    color: #292929;
-    text-decoration: none;
 }
 
 .content {
@@ -114,16 +150,6 @@ a {
 
 .arrow-text {
     font-size: 20px;
-}
-
-@media screen and (min-aspect-ratio: 1/1) {
-    .content {
-        text-align: left;
-    }
-
-    .arrow-text {
-        font-size: 20px;
-    }
 }
 
 @media screen and (max-width: 700px) {
