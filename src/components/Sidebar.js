@@ -11,7 +11,7 @@ const Sidebar = (props) => {
         <div className="sidebar container">
             <div className="sidebar upper">
                 <img src={logo} className="sidebar-icon logo" alt='Logo' onClick={() => props.scrollTo(3)}/>
-                <a href="https://drive.google.com/open?id=11ZNdBZM_VQQEglFSjy0ycjHs8_efJOzB" target="_blank" rel='noopener noreferrer'>
+                <a href="https://drive.google.com/open?id=1iUZ6TGW3A1Oevn0dW2vtmnrFpknKlDkV" target="_blank" rel='noopener noreferrer'>
                     <img src={resume} className="sidebar-icon upper" alt='Resume'/>
                 </a>
             </div>
