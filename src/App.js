@@ -16,7 +16,7 @@ function App() {
         {
         filename: 'joinme.png',
         title: "JoinMe",
-        subtitle: "Android App Prototype",
+        subtitle: "Android App",
         description: 'JoinMe is an Android app designed to facilitate easy, informal meet ups among friends. \n' +
             'It includes a friends system with database integration and a clear dashboard with the user’s friends’ current locations.',
             technologies: ["Java", "Google Firebase (Database & Authentication)"],
