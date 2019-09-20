@@ -18,9 +18,8 @@ function App() {
         title: "JoinMe",
         subtitle: "Android App Prototype",
         description: 'JoinMe is an Android app designed to facilitate easy, informal meet ups among friends. \n' +
-            'I led development on the app within my team, creating the vast majority of the app’s core features \n' +
-            'including a friends system with database integration and a clear dashboard with the user’s friends’ current locations.',
-            technologies: ["Java", "Google Firebase (Realtime Database)", "Google Firebase (Authentication)"],
+            'It includes a friends system with database integration and a clear dashboard with the user’s friends’ current locations.',
+            technologies: ["Java", "Google Firebase (Database & Authentication)"],
         tools: ["Android Studio", 'Git/GitHub']
         },
         {
