@@ -7,11 +7,16 @@ const Projects = (props) => {
         props.scrollTo(page);
     };
 
+    let images = [];
+    props.projects.forEach(project => {
+        images.push(<img className='project-item image' src={require(`../images/${project.filename.toLowerCase()}`)} alt={project.title} />)
+    });
+
     return (
         <div className="projects container">
             <div className="projects content">
                 <div>
-                    <Gallery projects={props.projects}/>
+                    <Gallery projects={props.projects} images={images}/>
                 </div>
                 <NavigationButtons pages={['Home', 'About']} scrollTo={scrollTo}/>
             </div>

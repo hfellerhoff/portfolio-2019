@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import ProjectItem from "./ProjectItem";
 
-const Gallery = ({projects}) => {
+const Gallery = ({projects, images}) => {
     const [currentPage, setCurrentPage] = useState(0);
 
     const handleArrowPress = (page) => {
@@ -31,7 +31,7 @@ const Gallery = ({projects}) => {
         if (currentPage < projects.length) {
             console.log(`Page ${currentPage} returned.`);
             return <ProjectItem key={currentPage} index={currentPage} project={projects[currentPage]}
-                                     onClick={handleArrowPress}/>
+                                     onClick={handleArrowPress} image={images[currentPage]}/>
         } else {
             return null;
         }

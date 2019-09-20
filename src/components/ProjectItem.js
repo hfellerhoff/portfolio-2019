@@ -3,7 +3,7 @@ import React from 'react'
 import '../pages/Projects.css'
 import GalleryArrow from "./GalleryArrow";
 
-function ProjectItem({ project: {filename, title, subtitle, description, technologies, tools}, onClick }) {
+function ProjectItem({ project: {filename, title, subtitle, description, technologies, tools}, onClick, image }) {
     return (
         <div className="project-item container">
             <div className='project-item header'>
@@ -12,7 +12,7 @@ function ProjectItem({ project: {filename, title, subtitle, description, technol
                 <GalleryArrow direction='right' onClick={onClick}/>
             </div>
             <div className='project-item image-container'>
-                <img className='project-item image' src={require(`../images/${filename.toLowerCase()}`)} alt={title} />
+                { image }
             </div>
             <div className="project-item title">
                 <h5>{title}</h5>
