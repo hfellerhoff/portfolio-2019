@@ -23,7 +23,7 @@ function NavigationButtons(props) {
 
     const buttons = [];
     pageNumbers.forEach((pageNumber, index) => {
-        buttons.push(<button onClick={() => props.scrollTo(pageNumber)}><h6>{props.pages[index]}</h6></button>)
+        buttons.push(<button key={index} onClick={() => props.scrollTo(pageNumber)}><h6>{props.pages[index]}</h6></button>)
     });
 
     return (

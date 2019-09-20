@@ -1,0 +1,20 @@
+.gallery-arrow {
+    width: 10vmin;
+    height: 10vmin;
+    border-radius: 50%;
+    /*background: rgba(0, 0, 0, 0.1);*/
+    /*border: 3px solid #292929;*/
+    display: flex;
+    align-items: center;
+    margin: 0px 0px;
+}
+
+.gallery-arrow:hover {
+    cursor: pointer;
+}
+
+.gallery-arrow-image {
+    width: 80%;
+    height: 80%;
+    display: inline-block;
+}

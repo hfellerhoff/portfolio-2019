@@ -3,7 +3,6 @@ import React from 'react'
 import NavigationButtons from "../components/NavigationButtons";
 
 import './Contact.css'
-import arrow from '../images/arrow.png';
 
 const Contact = (props) => {
     return (
@@ -19,12 +18,3 @@ const Contact = (props) => {
 };
 
 export default Contact;
-
-{/*<div className='contact container'>*/}
-{/*<img src={arrow} className='contact arrow-image' alt='Arrow' />*/}
-{/*<div className='contact arrow-text-container'>*/}
-{/*    <p className='contact arrow-text'>LinkedIn</p>*/}
-{/*    <p className='contact arrow-text'>+</p>*/}
-{/*    <p className='contact arrow-text'>Github</p>*/}
-{/*</div>*/}
-// </div>

@@ -1,12 +1,15 @@
 import React from 'react'
 
 import '../pages/Projects.css'
+import GalleryArrow from "./GalleryArrow";
 
-function ProjectItem({ project: {filename, title, subtitle, description, technologies, tools} }) {
+function ProjectItem({ project: {filename, title, subtitle, description, technologies, tools}, onClick }) {
     return (
         <div className="project-item container">
             <div className='project-item header'>
+                <GalleryArrow direction='left' onClick={onClick}/>
                 <h2>Projects.</h2>
+                <GalleryArrow direction='right' onClick={onClick}/>
             </div>
             <div className='project-item image-container'>
                 <img className='project-item image' src={require(`../images/${filename.toLowerCase()}`)} alt={title} />
@@ -15,9 +18,6 @@ function ProjectItem({ project: {filename, title, subtitle, description, technol
                 <h5>{title}</h5>
                 <h6 >{subtitle}</h6>
             </div>
-            {/*<div className="project-item subtitle">*/}
-            {/*    */}
-            {/*</div>*/}
             <div className="project-item description">
                 <p>{description}</p>
             </div>

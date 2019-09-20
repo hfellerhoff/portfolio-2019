@@ -2,7 +2,6 @@ import React from 'react'
 import {Spring} from "react-spring/renderprops-universal";
 
 import "./Home.css"
-import arrow from '../images/arrow.png';
 
 import NavigationButtons from '../components/NavigationButtons'
 
@@ -48,9 +47,5 @@ function Home(props) {
             </div>
     )
 }
-
-{/*<div className="home container">*/}
-{/*</div>*/}
-
 
 export default Home;

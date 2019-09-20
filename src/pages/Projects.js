@@ -1,6 +1,6 @@
 import React from 'react'
-import ProjectItem from "../components/ProjectItem";
 import NavigationButtons from "../components/NavigationButtons";
+import Gallery from "../components/Gallery";
 
 const Projects = (props) => {
     const scrollTo = (page) => {
@@ -11,11 +11,7 @@ const Projects = (props) => {
         <div className="projects container">
             <div className="projects content">
                 <div>
-                    {
-                        props.projects.map((project, index) => (
-                            <ProjectItem key={index} index={index} project={project}/>
-                        ))
-                    }
+                    <Gallery projects={props.projects}/>
                 </div>
                 <NavigationButtons pages={['Home', 'About']} scrollTo={scrollTo}/>
             </div>

@@ -21,7 +21,26 @@ function App() {
             'I led development on the app within my team, creating the vast majority of the app’s core features \n' +
             'including a friends system with database integration and a clear dashboard with the user’s friends’ current locations.',
             technologies: ["Java", "Google Firebase (Realtime Database)", "Google Firebase (Authentication)"],
-        tools: ["Android Studio"]
+        tools: ["Android Studio", 'Git/GitHub']
+        },
+        {
+            filename: 'checkers.png',
+            title: "Checkers",
+            subtitle: "Game",
+            description: 'A simple yet fully functional and visually appealing implementation of the classic game \n' +
+                'of Checkers. It implements all standard Checkers rules, including capturing, kinging, and victory conditions.',
+            technologies: ["Python", "Tkinter"],
+            tools: ["PyCharm", 'Git/GitHub']
+        },
+        {
+            filename: 'portfolio.png',
+            title: "Portfolio",
+            subtitle: "Website",
+            description: 'This portfolio site was built with the goal of being functional, \n' +
+                'responsive, and unique, helping me to gain proficiency in HTML, CSS, JavaScript, and the React.js \n' +
+                'framework. Animations are accomplished using the react-spring library.',
+            technologies: ["HTML", 'CSS', "JavaScript", 'React.js'],
+            tools: ["WebStorm", 'Git/GitHub']
         },
     ]);
 
