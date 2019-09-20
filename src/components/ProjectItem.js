@@ -11,21 +11,21 @@ function ProjectItem({ project: {filename, title, subtitle, description, technol
                 <h2>Projects.</h2>
                 <GalleryArrow direction='right' onClick={onClick}/>
             </div>
-            <div className='project-item image-container'>
+            <div className='project-item image-container fade-in'>
                 { image }
             </div>
-            <div className="project-item title">
+            <div className="project-item title fade-in">
                 <h5>{title}</h5>
                 <h6 >{subtitle}</h6>
             </div>
-            <div className="project-item description">
+            <div className="project-item description fade-in">
                 <p>{description}</p>
             </div>
-            <div className="project-item list-header technologies">
+            <div className="project-item list-header technologies fade-in">
                 <h6>Technologies</h6>
                 <ul>{ getListItems(technologies) }</ul>
             </div>
-            <div className="project-item list-header tools">
+            <div className="project-item list-header tools fade-in">
                 <h6>Tools</h6>
                 <ul>{ getListItems(tools) }</ul>
             </div>
