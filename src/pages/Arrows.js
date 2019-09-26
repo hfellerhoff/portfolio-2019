@@ -1,6 +1,7 @@
 import React from 'react'
 
 import arrow from "../images/arrow.png";
+import straightArrow from '../images/straight-arrow.png';
 import {Spring} from "react-spring/renderprops-universal";
 
 
@@ -25,7 +26,11 @@ export const HomeArrow = (props) => {
             {props => (
                 <div style={props}>
                     <img src={arrow} className='home arrow-image' alt='Arrow'/>
-                    <p className='home arrow-text'>Contact Me!</p>
+                    <div className='home arrow-text-container'>
+                        <p className='home arrow-text'>Contact</p>
+                        <p className='home arrow-text'>+</p>
+                        <p className='home arrow-text'>Resume</p>
+                    </div>
                 </div>
             )}
         </Spring>
