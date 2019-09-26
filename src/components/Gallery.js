@@ -1,37 +1,15 @@
 import React, {useState} from 'react'
 
-import ProjectItem from "./ProjectItem";
-
-const Gallery = ({projects, images}) => {
-    const [currentPage, setCurrentPage] = useState(0);
-
-    const handleArrowPress = (page) => {
-        let desiredNewPage = currentPage + page;
-
-        if (projects.length === 0) {
-            return;
-        }
-
-        while (desiredNewPage >= projects.length) {
-            desiredNewPage -= projects.length;
-        }
-        while (desiredNewPage < 0) {
-            desiredNewPage += projects.length;
-        }
-
-
-        setCurrentPage(desiredNewPage);
-    };
+const Gallery = ({ pages, currentPage }) => {
 
     const getPage = () => {
-        if (projects === null || projects === undefined) {
+        if (pages === null || pages === undefined) {
             return null;
         }
 
-        if (currentPage < projects.length) {
+        if (currentPage < pages.length) {
             console.log(`Page ${currentPage} returned.`);
-            return <ProjectItem key={currentPage} index={currentPage} project={projects[currentPage]}
-                                     onClick={handleArrowPress} image={images[currentPage]}/>
+            return pages[currentPage];
         } else {
             return null;
         }
@@ -43,6 +21,23 @@ const Gallery = ({projects, images}) => {
         </div>
     );
 
+};
+
+export const handleArrowPress = (currentPage, newPage, numPages) => {
+    let desiredNewPage = currentPage + newPage;
+
+    if (numPages === 0) {
+        return;
+    }
+
+    while (desiredNewPage >= numPages) {
+        desiredNewPage -= numPages;
+    }
+    while (desiredNewPage < 0) {
+        desiredNewPage += numPages;
+    }
+
+    return desiredNewPage;
 };
 
 export default Gallery;

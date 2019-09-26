@@ -1,7 +1,6 @@
 import React from 'react'
 
 import arrow from "../images/arrow.png";
-import straightArrow from '../images/straight-arrow.png';
 import {Spring} from "react-spring/renderprops-universal";
 
 

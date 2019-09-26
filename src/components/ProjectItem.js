@@ -3,7 +3,7 @@ import React from 'react'
 import '../pages/Projects.css'
 import GalleryArrow from "./GalleryArrow";
 
-function ProjectItem({ project: {filename, title, subtitle, description, technologies, tools}, onClick, image }) {
+function ProjectItem({ project: {title, subtitle, description, technologies, tools}, onClick, image }) {
     return (
         <div className="project-item container">
             <div className='project-item header'>

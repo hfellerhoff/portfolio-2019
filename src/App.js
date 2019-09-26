@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
-import { ContactArrow, HomeArrow, ResumeArrow, HomeResumeArrow, HomeContactArrow } from "./pages/Arrows";
+import { ContactArrow, HomeArrow, ResumeArrow} from "./pages/Arrows";
 
 import './App.css';
 
