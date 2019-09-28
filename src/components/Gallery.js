@@ -17,7 +17,7 @@ const Gallery = ({ pages, currentPage }) => {
 
     return (
         <div>
-            {getPage()}
+            { getPage() }
         </div>
     );
 

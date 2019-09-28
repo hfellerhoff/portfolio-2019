@@ -54,6 +54,10 @@ p, span, li {
     font-size: 8px;
 }
 
+.br {
+    margin: 0;
+}
+
 @media screen and (min-width: 320px) {
     h1 {
         font-size: calc(8.4375vw + 9px);
@@ -83,6 +87,10 @@ p, span, li {
 
     p, span, li {
         font-size: calc(1.25vw + 4px);
+    }
+
+    .br {
+        margin: 10px 0 0 0;
     }
 }
 
@@ -115,6 +123,10 @@ p, span, li {
 
     p, span, li {
         font-size: 16px;
+    }
+
+    .br {
+        margin: 20px 0 0 0;
     }
 }
 
@@ -162,9 +174,8 @@ button:focus {
 @media screen and (max-aspect-ratio: 1/1) {
     .content {
         text-align: center;
-        align-content: center;
         align-items: center;
-        justify-items: center;
+        justify-content: center;
         width: 90%;
         padding-top: 48px;
     }

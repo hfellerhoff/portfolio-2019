@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 
 import Sidebar from './components/Sidebar'
@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
 
-    const [projects] = useState([
+    const projects = [
         {
         filename: 'joinme.png',
         title: "JoinMe",
@@ -41,7 +41,46 @@ function App() {
             technologies: ["HTML", 'CSS', "JavaScript", 'React.js'],
             tools: ["WebStorm", 'Git/GitHub']
         },
-    ]);
+    ];
+
+    const aboutPages = [
+        {
+            title: 'Education',
+            subtitle: 'Loyola University Chicago',
+            details: 'Computer Science (BS) + Vocal Performance (BA)',
+            italicDetails: 'Projected Graduation May 2022'
+        },
+        {
+            title: 'Languages',
+            subtitle: 'Primary',
+            html: (
+                <div>
+                    <ul>
+                        <li>Java (4 years)</li>
+                        <li>Python (2 years)</li>
+                    </ul>
+                    <h5 className='br'>Secondary</h5>
+                    <ul>
+                        <li>JavaScript / HTML / CSS (1 year)</li>
+                        <li>Swift (1 year)</li>
+                    </ul>
+                </div>
+            )
+        },
+        {
+            title: 'Awards',
+            subtitle: 'Dean\'s List',
+            italicDetails: 'August 2018 – Present',
+            html: (
+                <div>
+                    <h5 style={{marginTop: 20}}>National Merit Finalist</h5>
+                    <h6><em>February 2017</em></h6>
+                    <p>An award distributed by the National Merit Scholarship Corporation which recognizes 15,000 out of the roughly 1.6 million students who take the
+                        PSAT/NMSQT for their academic achievement.</p>
+                </div>
+            )
+        },
+    ];
 
     let parallax;
 
@@ -63,7 +102,7 @@ function App() {
                     <Home scrollTo={handleScroll}/>
                 </ParallaxLayer>
                 <ParallaxLayer offset={1} speed={0}>
-                    <About scrollTo={handleScroll} />
+                    <About pages={aboutPages} scrollTo={handleScroll}/>
                 </ParallaxLayer>
                 <ParallaxLayer offset={2} speed={0}>
                     <Projects projects={projects} scrollTo={handleScroll}/>
