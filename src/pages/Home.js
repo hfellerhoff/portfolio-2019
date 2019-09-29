@@ -21,7 +21,7 @@ function Home (props) {
                         <h5>I'm Henry Fellerhoff - a computer programmer passionate about diving into projects and learning new things.</h5>
                     </FadeIn>
                 </div>
-                <FadeIn delay={2000} duration={1000} style={{ marginTop: 20 }}>
+                <FadeIn delay={2000} duration={1000} style={{ marginTop: 10 }}>
                     <NavigationButtons pages={['About', 'Projects', 'Contact']} scrollTo={scrollTo}/>
                 </FadeIn>
             </div>
