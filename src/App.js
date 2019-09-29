@@ -123,26 +123,3 @@ function App() {
 }
 
 export default App;
-
-//   const { location } = useContext(__RouterContext);
-//   const transitions = useTransition(location, location => location.pathname, {
-//       from: { opacity: 0, transform: "translateY(100%)" },
-//       enter: { opacity: 1, transform: "translateY(0%)" },
-//       leave: { opacity: 0, transform: "translateY(-100%)"}
-//   });
-//
-// return (
-//     <div className="app">
-//         <Sidebar/>
-//         <main>
-//             {transitions.map(({ item, props, key }) => (
-//                  <animated.div key={key} style={props }>
-//                      <Switch location={item}>
-//                          <Route exact path="/" component={Home}/>
-//                          <Route path="/about" component={About}/>
-//                      </Switch>
-//                  </animated.div>
-//             ))}
-//         </main>
-//     </div>
-// );
