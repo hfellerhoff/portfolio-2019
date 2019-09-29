@@ -14,12 +14,6 @@
     height: calc(4vw + 4vh);
 }
 
-.home.arrow-image.straight {
-    width: calc(5vw + 5vh);
-    height: calc(2vw + 2vh);
-}
-
-
 .home.arrow-text {
 }
 

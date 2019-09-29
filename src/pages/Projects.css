@@ -121,7 +121,7 @@
 
 @media screen and (max-aspect-ratio: 1/1) {
     .projects.content {
-        left: 0px;
+        left: 0;
     }
 
     .project-item.container {

@@ -16,7 +16,7 @@ const Projects = (props) => {
 
     const projects = [];
     props.projects.forEach((project, index) => {
-        let image = <img className='project-item image' src={require(`../images/${project.filename.toLowerCase()}`)} alt={project.title} />
+        let image = <img className='project-item image' src={require(`../images/${project.filename.toLowerCase()}`)} alt={project.title} />;
         projects.push(<ProjectItem key={index} index={index} project={project} image={image} onClick={handleNewPage}/>);
     });
 

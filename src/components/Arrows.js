@@ -1,7 +1,7 @@
 import React from 'react'
 
 import arrow from "../images/arrow.png";
-import {Spring} from "react-spring/renderprops-universal";
+import { FadeIn } from "./AnimationWrappers";
 
 
 export const ContactArrow = (props) => {
@@ -19,20 +19,14 @@ export const ContactArrow = (props) => {
 
 export const HomeArrow = (props) => {
     return (
-        <Spring from={{opacity: 0}}
-                to={{opacity: 1}}
-                config={{delay: 3000, duration: 1000}}>
-            {props => (
-                <div style={props}>
-                    <img src={arrow} className='home arrow-image' alt='Arrow'/>
-                    <div className='home arrow-text-container'>
-                        <p className='home arrow-text'>Contact</p>
-                        <p className='home arrow-text'>+</p>
-                        <p className='home arrow-text'>Resume</p>
-                    </div>
-                </div>
-            )}
-        </Spring>
+        <FadeIn delay={3000} duration={1000}>
+            <img src={arrow} className='home arrow-image' alt='Arrow'/>
+            <div className='home arrow-text-container'>
+                <p className='home arrow-text'>Contact</p>
+                <p className='home arrow-text'>+</p>
+                <p className='home arrow-text'>Resume</p>
+            </div>
+        </FadeIn>
     )
 };
 

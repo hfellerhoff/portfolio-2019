@@ -1,11 +1,11 @@
 import React from 'react'
-import {Spring} from "react-spring/renderprops-universal";
 
 import "./Home.css"
 
 import NavigationButtons from '../components/NavigationButtons'
+import { FadeIn } from "../components/AnimationWrappers";
 
-function Home(props) {
+function Home (props) {
 
     const scrollTo = (page) => {
         props.scrollTo(page);
@@ -14,36 +14,16 @@ function Home(props) {
     return (
             <div className="home content">
                 <div className="home text-container">
-                    <Spring
-                        from={{ opacity: 0}}
-                        to={{ opacity: 1}}
-                        config={{ delay: 0, duration: 1000}}>
-                        { props => (
-                            <div style={props}>
-                                <h1>Hi.</h1>
-                            </div>
-                        )}
-                    </Spring>
-                    <Spring
-                        from={{ opacity: 0}}
-                        to={{ opacity: 1}}
-                        config={{ delay: 1000, duration: 1000}}>
-                        { props => (
-                            <div style={props}>
-                                <h5>I'm Henry Fellerhoff - a computer programmer passionate about diving into projects and learning new things.</h5>
-                            </div>
-                        )}
-                    </Spring>
+                    <FadeIn delay={0} duration={1000}>
+                        <h1>Hi.</h1>
+                    </FadeIn>
+                    <FadeIn delay={1000} duration={1000}>
+                        <h5>I'm Henry Fellerhoff - a computer programmer passionate about diving into projects and learning new things.</h5>
+                    </FadeIn>
                 </div>
-                <Spring from={{ opacity: 0}}
-                        to={{ opacity: 1}}
-                        config={{ delay: 2000, duration: 1000}}>
-                    { props => (
-                        <div style={props}>
-                            <NavigationButtons pages={['About', 'Projects']} scrollTo={scrollTo}/>
-                        </div>
-                    )}
-                </Spring>
+                <FadeIn delay={2000} duration={1000}>
+                    <NavigationButtons pages={['About', 'Projects', 'Contact']} scrollTo={scrollTo}/>
+                </FadeIn>
             </div>
     )
 }

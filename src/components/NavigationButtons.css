@@ -28,13 +28,13 @@
 
 @media screen and (min-aspect-ratio: 1/1) {
     .navigation-buttons {
-        width: 80vw;
-        max-width: 600px;
+        width: 800px;
+        max-width: 80vw;
         flex-direction: row;
     }
 
     .navigation-buttons button {
-        margin: 0px 10px 0px 0px;
+        margin: 0 10px 0 0;
         flex: 1
     }
 }
@@ -57,7 +57,7 @@
     }
 
     .navigation-buttons button {
-        margin: 10px 0px 0px 0px;
+        margin: 10px 0 0 0;
         width: 100%;
     }
 }
