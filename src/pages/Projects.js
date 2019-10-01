@@ -26,7 +26,7 @@ const Projects = (props) => {
                 <div>
                     <Gallery pages={projects} currentPage={currentPage}/>
                 </div>
-                <NavigationButtons pages={['Home', 'About']} scrollTo={scrollTo}/>
+                <NavigationButtons pages={['About', 'Contact']} scrollTo={scrollTo}/>
             </div>
         </div>
     );
