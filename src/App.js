@@ -48,21 +48,24 @@ function App() {
             title: 'Education',
             subtitle: 'Loyola University Chicago',
             details: 'Computer Science (BS) + Vocal Performance (BA)',
-            italicDetails: 'Projected Graduation May 2022'
+            italicDetails: 'August 2018 - May 2022'
         },
         {
             title: 'Languages',
-            subtitle: 'Primary',
             html: (
                 <div>
                     <ul>
                         <li>Java (4 years)</li>
                         <li>Python (2 years)</li>
-                    </ul>
-                    <h5 className='br'>Secondary</h5>
-                    <ul>
-                        <li>JavaScript / HTML / CSS (1 year)</li>
+                        <li>JavaScript/TypeScript + HTML + CSS (2 years)</li>
                         <li>Swift (1 year)</li>
+                    </ul>
+                    <br />
+                    <h4>Frameworks & Tools</h4>
+                    <ul>
+                        <li>React (2 years)</li>
+                        <li>React Native (2 years)</li>
+                        <li>Git + GitHub/BitBucket</li>
                     </ul>
                 </div>
             )
