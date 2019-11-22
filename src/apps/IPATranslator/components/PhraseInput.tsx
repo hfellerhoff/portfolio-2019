@@ -28,6 +28,9 @@ const PhraseInput: React.FC<Props> = ({ inputText, setInputText }: Props) => {
       <form onSubmit={e => onSubmit(e)}>
         <textarea
           spellCheck={false}
+          autoComplete='false'
+          autoCorrect='false'
+          autoCapitalize='false'
           value={inputText}
           rows={0}
           className='ipa input'
