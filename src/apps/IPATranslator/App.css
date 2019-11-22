@@ -1,0 +1,103 @@
+.ipa.App {
+  min-height: 100vh;
+  background: #a0cd75;
+  color: whitesmoke;
+  padding: 80px 10vw 40px 10vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ipa.header.container {
+  top: 0px;
+  width: 100vw;
+  height: 60px;
+  background: #3e3e3e;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ipa.header.title {
+  color: whitesmoke;
+  font-size: 36px;
+}
+
+.ipa.header.body {
+  color: whitesmoke;
+  font-size: 24px;
+}
+
+.ipa.logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.ipa.language-select {
+  text-decoration: none;
+  border: none;
+  background: none;
+  appearance: none;
+  color: white;
+  font-size: 22px;
+  margin: 0 5px;
+  font-weight: 800;
+  border-bottom: 3px solid white;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.ipa.input {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: vertical;
+  width: 90vw;
+  height: 20vh;
+  max-width: 400px;
+  margin-top: 10px;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-resizer {
+  border-radius: 1%;
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid #3c6516;
+  border-left: 100px solid transparent;
+}
+
+.ipa.footer {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ipa.footer.text {
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+  font-size: 20px;
+  color: whitesmoke;
+}
+.ipa.footer.link {
+  margin: 0;
+  padding: 0;
+  margin-left: 5px;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  border-bottom: 2px solid white;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
