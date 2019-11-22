@@ -13,9 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "@typescript-eslint/no-angle-bracket-type-assertion": "off",
-    "@typescript-eslint/consistent-type-assertions": "off"
+    "jsx": "react"
   },
   "include": ["src"]
 }
