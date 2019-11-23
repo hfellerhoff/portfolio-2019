@@ -27,7 +27,7 @@ const ParseItalian = (text: string) => {
 
     switch (letter) {
       case 'a':
-        ipaToAdd = IPA.CLOSED_A;
+        ipaToAdd = IPA.BRIGHT_A;
         break;
       case 'e':
         ipaToAdd = IPA.CLOSED_E;

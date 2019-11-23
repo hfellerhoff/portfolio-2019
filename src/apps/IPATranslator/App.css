@@ -12,10 +12,11 @@
 .ipa.header.container {
   top: 0px;
   width: 100vw;
-  height: 60px;
+  height: 70px;
   background: #3e3e3e;
   position: fixed;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.1);
@@ -23,8 +24,17 @@
 }
 
 .ipa.header.title {
+  padding: 0;
+  margin: 0;
   color: whitesmoke;
-  font-size: 36px;
+  font-size: 30px;
+}
+
+.ipa.header.subtitle {
+  padding: 0;
+  margin: 0;
+  color: whitesmoke;
+  font-size: 14px;
 }
 
 .ipa.header.body {
@@ -36,6 +46,12 @@
   margin-top: 5px;
   color: whitesmoke;
   font-size: 16px;
+}
+
+.ipa.details {
+  margin-top: 20px;
+  color: whitesmoke;
+  font-size: 18px;
 }
 
 .ipa.logo {
@@ -70,7 +86,7 @@
   margin-top: 10px;
   padding: 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.2);
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
@@ -82,6 +98,56 @@
   height: 0;
   border-bottom: 100px solid #336558;
   border-left: 100px solid transparent;
+}
+
+.ipa.display.phoneme.text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18pt;
+  /* font-weight: 700; */
+  /* letter-spacing: 1px; */
+}
+
+.ipa.display.phoneme.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+
+.ipa.display.phoneme.tooltip:hover {
+  border-bottom: 2px solid #1e1e1e;
+}
+
+.ipa.display.phoneme.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 6px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -75px;
+  padding: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.ipa.display.phoneme.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.ipa.result {
+  background: whitesmoke;
+  margin-top: 40px;
+  box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  width: 80vw;
+  min-height: 20vh;
+  max-width: 400px;
 }
 
 .ipa.footer {

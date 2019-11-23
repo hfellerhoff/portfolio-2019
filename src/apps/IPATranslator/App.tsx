@@ -6,20 +6,21 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import parseLatin from './util/ParseLatin';
 import parseGerman from './util/ParseGerman';
-import { Languages } from './constants/Interfaces';
-import ParseItalian from './util/ParseItalian';
-import ParseFrench from './util/ParseFrench';
+import { Languages, Result } from './constants/Interfaces';
+import parseItalian from './util/ParseItalian';
+import parseFrench from './util/ParseFrench';
 
 const App: React.FC = () => {
   const [inputText, setInputText] = useState('');
   const [language, setLanguage] = useState(Languages.Latin);
 
   const parseText = (text: string) => {
-    if (language === Languages.Latin) return parseLatin(text);
-    else if (language === Languages.German) return parseGerman(text);
-    else if (language === Languages.Italian) return ParseItalian(text);
-    else if (language === Languages.French) return ParseFrench(text);
-    else return 'Error setting language.';
+    // if (language === Languages.Latin)
+    return parseLatin(text);
+    // else if (language === Languages.German) return parseGerman(text);
+    // else if (language === Languages.Italian) return parseItalian(text);
+    // else if (language === Languages.French) return parseFrench(text);
+    // else return 'Error setting language.';
   };
 
   return (
@@ -31,7 +32,7 @@ const App: React.FC = () => {
         language={language}
         setLanguage={setLanguage}
       />
-      <IPADisplay text={parseText(inputText)} />
+      <IPADisplay result={parseText(inputText)} />
       <Footer />
     </div>
   );

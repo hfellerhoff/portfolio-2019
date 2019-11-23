@@ -1,3 +1,20 @@
+export interface Phoneme {
+  ipa: string;
+  rule: string;
+}
+
+export interface Word {
+  syllables: Phoneme[];
+}
+
+export interface Line {
+  words: Word[];
+}
+
+export interface Result {
+  lines: Line[];
+}
+
 export enum Languages {
   Latin = 'Latin',
   German = 'German',
@@ -14,8 +31,8 @@ export enum IPA {
   OPEN_U = 'ʊ',
   CLOSED_O = 'o',
   OPEN_O = 'ɔ',
-  OPEN_A = 'a',
-  CLOSED_A = 'ɑ',
+  BRIGHT_A = 'a',
+  DARK_A = 'ɑ',
   OPEN_Y = 'y',
   CLOSED_Y = 'Y',
   CLOSED_MIXED_O = 'ø',
@@ -23,6 +40,7 @@ export enum IPA {
   J_GLIDE = 'j',
   W_GLIDE = 'w',
   FLIPPED_R = 'ɾ',
+  ROLLED_R = 'r',
   SCHWA = 'e',
   R_SCHWA = 'ʁ',
   ICH_LAUT = 'ç',
@@ -38,6 +56,9 @@ export enum IPA {
   L = 'l',
   B = 'b',
   GLI = 'ʎ',
+  V = 'v',
+  M = 'm',
+  N = 'n',
   FRICATIVE_C = 'ʃ',
   FRICATIVE_G = 'ʒ',
   BACK_SWOOP_N = 'ɲ',
