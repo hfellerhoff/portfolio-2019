@@ -1,11 +1,19 @@
 import React from 'react';
+import { Languages } from '../constants/Interfaces';
 
 interface Props {
   inputText: string;
   setInputText: React.Dispatch<React.SetStateAction<string>>;
+  language: Languages;
+  setLanguage: React.Dispatch<React.SetStateAction<Languages>>;
 }
 
-const PhraseInput: React.FC<Props> = ({ inputText, setInputText }: Props) => {
+const PhraseInput: React.FC<Props> = ({
+  inputText,
+  setInputText,
+  language,
+  setLanguage,
+}: Props) => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -15,16 +23,42 @@ const PhraseInput: React.FC<Props> = ({ inputText, setInputText }: Props) => {
     setInputText(text);
   };
 
+  const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value as Languages);
+  };
+
+  const getNote = () => {
+    if (
+      language === Languages.German ||
+      language === Languages.Italian ||
+      language === Languages.French
+    ) {
+      return (
+        <h3 className='ipa note'>
+          <em>{`Note: ${language} word transcription is still very WIP, and not useable in its current form.`}</em>
+        </h3>
+      );
+    }
+    return <></>;
+  };
+
   return (
     <div>
       <h2 className='ipa header body'>
         Input some
-        <select name='Language' className='ipa language-select'>
-          <option value='latin'>Latin</option>
-          {/* <option value='german'>German</option> */}
+        <select
+          onChange={e => onSelectChange(e)}
+          name='Language'
+          className='ipa language-select'
+        >
+          <option value={Languages.Latin}>Latin</option>
+          <option value={Languages.German}>German</option>
+          <option value={Languages.Italian}>Italian</option>
+          <option value={Languages.French}>French</option>
         </select>
         text to translate:
       </h2>
+      {getNote()}
       <form onSubmit={e => onSubmit(e)}>
         <textarea
           spellCheck={false}

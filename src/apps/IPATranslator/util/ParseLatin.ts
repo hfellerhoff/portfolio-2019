@@ -1,41 +1,8 @@
-enum IPA {
-  CLOSED_I = 'i',
-  OPEN_E = 'ε',
-  CLOSED_U = 'u',
-  OPEN_O = 'ɔ',
-  CLOSED_A = 'ɑ',
-  J_GLIDE = 'j',
-  W_GLIDE = 'w',
-  FLIPPED_R = 'ɾ',
-  K = 'k',
-  G = 'g',
-  T = 't',
-  D = 'd',
-  Z = 'z',
-  F = 'f',
-  P = 'p',
-  S = 's',
-  FRICATIVE_C = 'ʃ',
-  FRICATIVE_G = 'ʒ',
-  BACK_SWOOP_N = 'ɲ',
-}
-
-const isVowel = (char: string) => {
-  return (
-    ['a', 'e', 'i', 'o', 'u', 'y', 'œ', 'æ'].indexOf(char.toLowerCase()) !== -1
-  );
-};
-
-const isFrontVowel = (char: string) => {
-  return ['e', 'i', 'y', 'œ', 'æ'].indexOf(char.toLowerCase()) !== -1;
-};
-
-// const isBackVowel = (char: string) => {
-//   return ['a', 'o', 'u'].indexOf(char.toLowerCase()) !== -1;
-// };
+import { IPA } from '../constants/Interfaces';
+import { isVowel, isFrontVowel, getCharArray } from './Helper';
 
 const parseLatin = (text: string) => {
-  const charArray: string[] = text.toLowerCase().split('');
+  const charArray: string[] = getCharArray(text);
   let parsedIPA = '';
   const firstLetter = charArray[0];
   const lastLetter = charArray[charArray.length - 1];
