@@ -6,10 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Description from './components/Description';
 import parseLatin from './util/ParseLatin';
-import parseGerman from './util/ParseGerman';
-import { Languages, Result } from './constants/Interfaces';
-import parseItalian from './util/ParseItalian';
-import parseFrench from './util/ParseFrench';
+import { Languages } from './constants/Interfaces';
 import { SAMPLE_LATIN } from './util/Sample';
 import { animateScroll } from 'react-scroll';
 

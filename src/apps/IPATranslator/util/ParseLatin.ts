@@ -1,4 +1,4 @@
-import { IPA, Phoneme, Result, Line, Word } from '../constants/Interfaces';
+import { IPA, Phoneme, Result } from '../constants/Interfaces';
 import { isVowel, isFrontVowel, getCharArray } from './Helper';
 import Rules from '../constants/LatinRules';
 

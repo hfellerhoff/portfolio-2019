@@ -1,5 +1,5 @@
 import React from 'react';
-import { Result, Word, Phoneme, Line } from '../constants/Interfaces';
+import { Result, Word, Line } from '../constants/Interfaces';
 import Rules from '../constants/LatinRules';
 
 interface Props {
@@ -96,6 +96,9 @@ const ResultElement = ({ result }: DisplayProps) => {
 const IPADisplay: React.FC<Props> = ({ result }: Props) => {
   return (
     <>
+      <h2 className='ipa header body' style={{ marginTop: 30 }}>
+        Transcription result:{' '}
+      </h2>
       <div className='ipa result'>
         <ResultElement result={result} />
       </div>
