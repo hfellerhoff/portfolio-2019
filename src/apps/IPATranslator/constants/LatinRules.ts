@@ -48,7 +48,9 @@ const Rules = {
   PS: `All 'ps' phonemes are transcribed as [${IPA.P + IPA.S}].`,
   QU: `All 'qu' phonemes are transcribed as [${IPA.K + IPA.W_GLIDE}].`,
   SC_FRONTVOWEL: `All 'sc' phonemes followed by a front vowel are transcribed as [${IPA.FRICATIVE_C}].`,
-  IHI: `All 'ihi' letter groups are transcribed as [${IPA.K}].`,
+  IHI: `All 'ihi' letter groups are transcribed as [${IPA.CLOSED_I +
+    IPA.K +
+    IPA.CLOSED_I}].`,
   NGU: `All 'ngu' letter groups followed by a vowel are transcribed as [${IPA.FRONT_SWOOP_N +
     IPA.G +
     IPA.W_GLIDE}].`,

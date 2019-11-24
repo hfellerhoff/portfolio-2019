@@ -151,6 +151,7 @@
   padding: 10px;
   user-select: none;
   position: absolute;
+  z-index: 1;
 }
 
 .ipa.display.phoneme.tooltip:hover .tooltiptext {

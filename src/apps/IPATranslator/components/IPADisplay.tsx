@@ -78,7 +78,7 @@ const LineElement = ({ line }: LineProps) => {
     wordElements.push(wordElement);
     wordElements.push(spaceElement);
   });
-  return <p>{wordElements}</p>;
+  return <p style={{ display: 'flex', flexWrap: 'wrap' }}>{wordElements}</p>;
 };
 
 type DisplayProps = {
