@@ -2,7 +2,7 @@ import { IPA } from './Interfaces';
 
 const Rules = {
   NONE: ``,
-  UNKNOWN: `Could not find a transcription rule for this phoneme.`,
+  UNKNOWN: `Could not find a transcription rule for this character.`,
   SAME: `This consonant does not change in transcription.`,
   DEFAULT_A: `All 'a' vowels are transcribed as [${IPA.DARK_A}].`,
   DEFAULT_E: `All 'e', 'æ', and 'œ' vowels are transcribed as [${IPA.OPEN_E}].`,

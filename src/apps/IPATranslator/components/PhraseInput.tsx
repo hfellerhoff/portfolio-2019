@@ -52,11 +52,11 @@ const PhraseInput: React.FC<Props> = ({
           className='ipa language-select'
         >
           <option value={Languages.Latin}>Latin</option>
-          <option value={Languages.German}>German</option>
+          {/* <option value={Languages.German}>German</option>
           <option value={Languages.Italian}>Italian</option>
-          <option value={Languages.French}>French</option>
+          <option value={Languages.French}>French</option> */}
         </select>
-        text to translate:
+        text to transcribe:
       </h2>
       {getNote()}
       <form onSubmit={e => onSubmit(e)}>

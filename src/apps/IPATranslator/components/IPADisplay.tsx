@@ -7,31 +7,62 @@ interface Props {
 }
 
 type PhonemeProps = {
-  phoneme: Phoneme;
+  text: string;
+  rule: string;
+  isIPA: boolean;
 };
-const PhonemeElement = ({ phoneme }: PhonemeProps) => {
-  if (phoneme.rule !== Rules.NONE)
+const PhonemeElement = ({ text, rule, isIPA }: PhonemeProps) => {
+  const getText = () => {
+    return isIPA ? (
+      <span className='ipa display phoneme text'>{text}</span>
+    ) : (
+      <span className='ipa display phoneme original-text'>{text}</span>
+    );
+  };
+
+  if (rule !== Rules.NONE)
     return (
       <div className='ipa display phoneme tooltip'>
-        <span className='ipa display phoneme text'>{phoneme.ipa}</span>
-        <span className='tooltiptext'>{phoneme.rule}</span>
+        {getText()}
+        <span className='tooltiptext'>{rule}</span>
       </div>
     );
-  else {
-    return <span className='ipa display phoneme text'>{phoneme.ipa}</span>;
-  }
+  else return getText();
 };
 
 type WordProps = {
   word: Word;
 };
 const WordElement = ({ word }: WordProps) => {
+  const originalSyllableElements: JSX.Element[] = [];
   const syllableElements: JSX.Element[] = [];
   word.syllables.forEach((phoneme, index) => {
-    const phonemeElement = <PhonemeElement phoneme={phoneme} key={index} />;
+    const phonemeElement = (
+      <PhonemeElement
+        isIPA
+        text={phoneme.ipa}
+        rule={phoneme.rule}
+        key={index}
+      />
+    );
     syllableElements.push(phonemeElement);
+
+    const originalPhonemeElement = (
+      <PhonemeElement
+        isIPA={false}
+        text={phoneme.text}
+        rule={phoneme.rule}
+        key={index}
+      />
+    );
+    originalSyllableElements.push(originalPhonemeElement);
   });
-  return <span>{syllableElements}</span>;
+  return (
+    <div className='ipa display phoneme block'>
+      <p>{originalSyllableElements}</p>
+      <p>{syllableElements}</p>
+    </div>
+  );
 };
 
 type LineProps = {

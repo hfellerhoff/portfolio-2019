@@ -1,4 +1,5 @@
 export interface Phoneme {
+  text: string;
   ipa: string;
   rule: string;
 }

@@ -7,7 +7,7 @@ const Header: React.FC<Props> = () => {
     <div className='ipa header container'>
       <h1 className='ipa header title'>Open IPA</h1>
       <h3 className='ipa header subtitle'>
-        Free, informative IPA translations
+        Free, informative IPA transcriptions
       </h3>
     </div>
   );
