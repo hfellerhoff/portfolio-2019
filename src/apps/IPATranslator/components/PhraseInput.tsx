@@ -35,7 +35,7 @@ const PhraseInput: React.FC<Props> = ({
     ) {
       return (
         <h3 className='ipa note'>
-          <em>{`Note: ${language} word transcription is still very WIP, and not useable in its current form.`}</em>
+          <em>{`Note: ${language} word transcription is still very WIP, and not reliable in its current form.`}</em>
         </h3>
       );
     }
@@ -50,11 +50,12 @@ const PhraseInput: React.FC<Props> = ({
           onChange={e => onSelectChange(e)}
           name='Language'
           className='ipa language-select'
+          value={language}
         >
           <option value={Languages.Latin}>Latin</option>
           {/* <option value={Languages.German}>German</option>
-          <option value={Languages.Italian}>Italian</option>
-          <option value={Languages.French}>French</option> */}
+          <option value={Languages.Italian}>Italian</option> */}
+          <option value={Languages.French}>French</option>
         </select>
         text to transcribe:
       </h2>

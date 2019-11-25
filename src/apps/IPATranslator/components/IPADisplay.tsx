@@ -59,8 +59,8 @@ const WordElement = ({ word }: WordProps) => {
   });
   return (
     <div className='ipa display phoneme block'>
-      <p>{originalSyllableElements}</p>
-      <p>{syllableElements}</p>
+      <div>{originalSyllableElements}</div>
+      <div>{syllableElements}</div>
     </div>
   );
 };
@@ -78,7 +78,9 @@ const LineElement = ({ line }: LineProps) => {
     wordElements.push(wordElement);
     wordElements.push(spaceElement);
   });
-  return <p style={{ display: 'flex', flexWrap: 'wrap' }}>{wordElements}</p>;
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>{wordElements}</div>
+  );
 };
 
 type DisplayProps = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import PhraseInput from './components/PhraseInput';
 import IPADisplay from './components/IPADisplay';
@@ -9,6 +9,7 @@ import parseLatin from './util/ParseLatin';
 import { Languages } from './constants/Interfaces';
 import { SAMPLE_LATIN } from './util/Sample';
 import { animateScroll } from 'react-scroll';
+import ParseFrench from './util/ParseFrench';
 
 const App: React.FC = () => {
   const [inputText, setInputText] = useState('');
@@ -16,6 +17,7 @@ const App: React.FC = () => {
 
   const parseText = (text: string) => {
     // if (language === Languages.Latin)
+    if (language === Languages.French) return ParseFrench(text);
     return parseLatin(text);
     // else if (language === Languages.German) return parseGerman(text);
     // else if (language === Languages.Italian) return parseItalian(text);
@@ -24,12 +26,17 @@ const App: React.FC = () => {
   };
 
   const onSampleTranscription = () => {
+    setLanguage(Languages.Latin);
     const animationTime = 500;
     animateScroll.scrollToTop({
       duration: animationTime,
     });
     setTimeout(() => setInputText(SAMPLE_LATIN), animationTime);
   };
+
+  useEffect(() => {
+    setInputText('');
+  }, [language]);
 
   return (
     <div className='ipa App'>
