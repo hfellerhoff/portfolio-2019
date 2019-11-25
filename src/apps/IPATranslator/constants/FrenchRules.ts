@@ -19,9 +19,12 @@ const Rules = {
   S: `Single and double 's' consonants are transcribed as [${IPA.S}].`,
   N: `Single and double 'n' consonants are transcribed as [${IPA.N}].`,
   M: `Single and double 'm' consonants are transcribed as [${IPA.M}].`,
-  T: `Single and double 's' consonants are transcribed as [${IPA.T}].`,
+  T: `Single and double 't' consonants are transcribed as [${IPA.T}].`,
   L: `Single and double 'l' consonants are transcribed as [${IPA.L}].`,
   P: `Single and double 'p' consonants are transcribed as [${IPA.P}].`,
+  B: `Single and double 'b' consonants are transcribed as [${IPA.B}].`,
+  F: `Single and double 'f' consonants are transcribed as [${IPA.F}].`,
+  V: `Single and double 'v' consonants are transcribed as [${IPA.V}].`,
   INTERVOCALIC_S: `Intervocalic 's' consonants are transcribed as [${IPA.Z}].`,
   FINAL_TION: `A 't' consonant in a final '-tion', '-tiel', or '-tieux' letter group is transcribed as [${IPA.S}].`,
   TH: `A 'th' consonant group is transcribed as [${IPA.T}].`,
@@ -45,14 +48,31 @@ const Rules = {
   ACUTE_E: `All 'é' vowels with an acute accent are transcribed as [${IPA.CLOSED_E}].`,
   ACCENT_E: `All 'è', 'ê', and 'ë' vowels with a grave accent, circumflex accent, or diaeresis are transcribed as [${IPA.OPEN_E}].`,
   ACCENT_I: `All 'î' and 'ï' vowels with a circumflex accent or diaeresis are transcribed as [${IPA.CLOSED_I}].`,
+  ACCENT_O: `All 'ô' vowels with a circumflex accent are transcribed as [${IPA.CLOSED_O}].`,
+  ACCENT_U: `All 'û' vowels with a circumflex accent are transcribed as [${IPA.CLOSED_Y}].`,
+  FINAL_AS: `For the purpose of Lyric Diction, all final '-as' letter groups can be transcribed as [${IPA.BRIGHT_A}].`,
+  FINAL_E_DRZ: `Final '-ed(s)', '-er(s)', and 'ez' endings are transcribed as [${IPA.CLOSED_E}].`,
+  FINAL_EC: `Final '-ec(s)' endings are transcribed as [${IPA.OPEN_E +
+    IPA.K}].`,
+  FINAL_EF: `Final '-ef(s)' endings are transcribed as [${IPA.OPEN_E +
+    IPA.F}].`,
+  FINAL_EL: `Final '-el(s)' endings are transcribed as [${IPA.OPEN_E +
+    IPA.L}].`,
+  FINAL_ET: `Final '-et(s)' endings are transcribed as [${IPA.OPEN_E}]. Note: Final [${IPA.OPEN_E}] vowels are normally pronounced a bit more closed than a typical [${IPA.OPEN_E}].`,
+  FINAL_O_SILENTCONSONANT: `Final 'o' vowels followed by a silent consonant are transcribed as [${IPA.CLOSED_O}].`,
+  FINAL_IE: `Final '-ie' letter groups are transcribed as [${IPA.CLOSED_I}].`,
 };
 
 /*
 Rules to implement:
-- Final consonants are silent except for c, r, f, l
 - Consonants that are doubled in spelling are not doubled
   in transcription except for initial ill, irr, inn, imm
 - Consonant n silent when preceded by a nasal vowel.
+- Vocalic harmonization
+- Vowel clusters
+- Glides (semivowels)
+- French schwa
+- Nasals
 */
 
 export default Rules;

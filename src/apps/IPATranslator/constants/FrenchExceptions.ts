@@ -13,6 +13,7 @@ const Rules = {
   OPEN_ER: `This word is an exception in which the final '-er' is transcribed with an open [${IPA.OPEN_E}].`,
   HARD_CH: `This word is an exception in which the 'ch' consonant group becomes a plosive [${IPA.K}].`,
   BRIGHT_A: `This word is an exception, and is transcribed with a bright [${IPA.BRIGHT_A}].`,
+  FINAL_AI: `This word is an exception, and is transcribed with a (semi-open) [${IPA.OPEN_E}].`,
 };
 
 const MerVerExceptions: ExceptionDictionary = {
@@ -108,12 +109,35 @@ const ChExceptions: ExceptionDictionary = {
   },
   chœur: {
     // TODO: Fix this, as it doesn't get recognized
-    ipa: 'kœr',
+    ipa: 'kœɾ',
     rule: Rules.HARD_CH,
   },
   choeur: {
-    ipa: 'kœr',
+    ipa: 'kœɾ',
     rule: Rules.HARD_CH,
+  },
+};
+
+const FinalAiExceptions: ExceptionDictionary = {
+  balai: {
+    ipa: 'balε',
+    rule: Rules.FINAL_AI,
+  },
+  lai: {
+    ipa: 'lε',
+    rule: Rules.FINAL_AI,
+  },
+  mai: {
+    ipa: 'mε',
+    rule: Rules.FINAL_AI,
+  },
+  rai: {
+    ipa: 'ɾε',
+    rule: Rules.FINAL_AI,
+  },
+  vrai: {
+    ipa: 'vɾε',
+    rule: Rules.FINAL_AI,
   },
 };
 
@@ -146,12 +170,20 @@ const MiscExceptions: ExceptionDictionary = {
     ipa: 'lis',
     rule: Rules.EXCEPTION,
   },
+  maison: {
+    ipa: 'm(e)zõ',
+    rule: Rules.EXCEPTION,
+  },
   o: {
     ipa: 'o',
     rule: Rules.EXCEPTION,
   },
   oh: {
     ipa: 'o',
+    rule: Rules.EXCEPTION,
+  },
+  pays: {
+    ipa: 'pei',
     rule: Rules.EXCEPTION,
   },
   solennelle: {
@@ -164,6 +196,7 @@ const Exceptions: ExceptionDictionary = {
   ...MerVerExceptions,
   ...OpenErExceptions,
   ...ChExceptions,
+  ...FinalAiExceptions,
   ...MiscExceptions,
 };
 
