@@ -30,6 +30,7 @@ const ParseFrench = (text: string) => {
 
   let previousPhoneme = '';
   let startOfNewWord = true;
+
   for (let index = 0; index < charArray.length; index += 1) {
     const letter = charArray[index];
     let phoneme: Phoneme = {
@@ -37,6 +38,7 @@ const ParseFrench = (text: string) => {
       ipa: letter,
       rule: Rules.UNKNOWN,
     };
+    let indexToAdd = 0;
 
     let previousLetter = '';
     if (index > 0) {
@@ -77,7 +79,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.FRICATIVE_C,
             rule: Rules.CH,
           };
-          index += 1;
+          indexToAdd = 1;
         } else if (isFrontVowel(nextLetter)) {
           phoneme = {
             text: 'c',
@@ -99,14 +101,14 @@ const ParseFrench = (text: string) => {
             ipa: IPA.BACK_SWOOP_N,
             rule: Rules.GN,
           };
-          index += 1;
+          indexToAdd = 1;
         } else if (nextLetter === 'u') {
           phoneme = {
             text: 'gu',
             ipa: IPA.G,
             rule: Rules.GU,
           };
-          index += 1;
+          indexToAdd = 1;
         } else if (isFrontVowel(nextLetter)) {
           phoneme = {
             text: 'g',
@@ -169,7 +171,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.K,
             rule: Rules.QU,
           };
-          index += 1;
+          indexToAdd = 1;
         }
         if (isSpace(nextLetter)) {
           phoneme = {
@@ -186,7 +188,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.FLIPPED_R,
             rule: Rules.R,
           };
-          index += 1;
+          indexToAdd = 1;
         } else
           phoneme = {
             text: 'r',
@@ -221,7 +223,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.S,
             rule: Rules.S,
           };
-          index += 1;
+          indexToAdd = 1;
         } else if (isSpace(nextLetter)) {
           phoneme = {
             text: 's',
@@ -271,14 +273,14 @@ const ParseFrench = (text: string) => {
             ipa: IPA.T,
             rule: Rules.TH,
           };
-          index += 1;
+          indexToAdd = 1;
         } else if (nextLetter === 't') {
           phoneme = {
             text: 'tt',
             ipa: IPA.T,
             rule: Rules.T,
           };
-          index += 1;
+          indexToAdd = 1;
         } else {
           phoneme = {
             text: 't',
@@ -323,7 +325,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.F,
             rule: Rules.PH,
           };
-          index += 1;
+          indexToAdd = 1;
         }
         if (isSpace(nextLetter)) {
           phoneme = {
@@ -356,7 +358,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.N,
             rule: Rules.N,
           };
-          index += 1;
+          indexToAdd = 1;
         } else {
           phoneme = {
             text: 'n',
@@ -372,7 +374,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.M,
             rule: Rules.M,
           };
-          index += 1;
+          indexToAdd = 1;
         } else {
           phoneme = {
             text: 'm',
@@ -388,7 +390,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.L,
             rule: Rules.L,
           };
-          index += 1;
+          indexToAdd = 1;
         } else {
           phoneme = {
             text: 'l',
@@ -404,7 +406,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.P,
             rule: Rules.P,
           };
-          index += 1;
+          indexToAdd = 1;
         } else {
           phoneme = {
             text: 'p',
@@ -420,6 +422,20 @@ const ParseFrench = (text: string) => {
           text: 'a',
           ipa: IPA.BRIGHT_A,
           rule: Rules.SINGLE_A,
+        };
+        break;
+      case 'à':
+        phoneme = {
+          text: 'à',
+          ipa: IPA.BRIGHT_A,
+          rule: Rules.GRAVE_A,
+        };
+        break;
+      case 'â':
+        phoneme = {
+          text: 'â',
+          ipa: IPA.DARK_A,
+          rule: Rules.CIRCUMFLEX_A,
         };
         break;
       case 'e':
@@ -441,9 +457,51 @@ const ParseFrench = (text: string) => {
           };
         }
         break;
+      case 'é':
+        phoneme = {
+          text: 'é',
+          ipa: IPA.CLOSED_E,
+          rule: Rules.GRAVE_A,
+        };
+        break;
+      case 'è':
+        phoneme = {
+          text: 'è',
+          ipa: IPA.OPEN_E,
+          rule: Rules.ACCENT_E,
+        };
+        break;
+      case 'ê':
+        phoneme = {
+          text: 'ê',
+          ipa: IPA.OPEN_E,
+          rule: Rules.ACCENT_E,
+        };
+        break;
+      case 'ë':
+        phoneme = {
+          text: 'ë',
+          ipa: IPA.OPEN_E,
+          rule: Rules.ACCENT_E,
+        };
+        break;
       case 'i':
         phoneme = {
           text: 'i',
+          ipa: IPA.CLOSED_I,
+          rule: Rules.SINGLE_I_OR_Y,
+        };
+        break;
+      case 'î':
+        phoneme = {
+          text: 'î',
+          ipa: IPA.CLOSED_I,
+          rule: Rules.ACCENT_I,
+        };
+        break;
+      case 'ï':
+        phoneme = {
+          text: 'ï',
           ipa: IPA.CLOSED_I,
           rule: Rules.SINGLE_I_OR_Y,
         };
@@ -514,7 +572,7 @@ const ParseFrench = (text: string) => {
           syllables: [],
         });
         startOfNewWord = true;
-        // index += 1;
+        // indexToAdd = 1;
         break;
       case '\n':
         result.lines.push({
@@ -539,6 +597,8 @@ const ParseFrench = (text: string) => {
       }
     }
     startOfNewWord = false;
+
+    index += indexToAdd;
 
     const currentLine = result.lines[result.lines.length - 1];
     const currentWord = currentLine.words[currentLine.words.length - 1];

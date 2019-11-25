@@ -11,6 +11,7 @@ const Rules = {
   EXCEPTION: `This word is an exception, and is transcribed as shown.`,
   MER_VER: `This is known as a 'mer/ver' word, which gets transcribed with an open [${IPA.OPEN_E}].`,
   OPEN_ER: `This word is an exception in which the final '-er' is transcribed with an open [${IPA.OPEN_E}].`,
+  HARD_CH: `This word is an exception in which the 'ch' consonant group becomes a plosive [${IPA.K}].`,
   BRIGHT_A: `This word is an exception, and is transcribed with a bright [${IPA.BRIGHT_A}].`,
 };
 
@@ -100,6 +101,22 @@ const OpenErExceptions: ExceptionDictionary = {
   },
 };
 
+const ChExceptions: ExceptionDictionary = {
+  écho: {
+    ipa: 'eko',
+    rule: Rules.HARD_CH,
+  },
+  chœur: {
+    // TODO: Fix this, as it doesn't get recognized
+    ipa: 'kœr',
+    rule: Rules.HARD_CH,
+  },
+  choeur: {
+    ipa: 'kœr',
+    rule: Rules.HARD_CH,
+  },
+};
+
 const MiscExceptions: ExceptionDictionary = {
   et: {
     ipa: 'e',
@@ -146,6 +163,7 @@ const MiscExceptions: ExceptionDictionary = {
 const Exceptions: ExceptionDictionary = {
   ...MerVerExceptions,
   ...OpenErExceptions,
+  ...ChExceptions,
   ...MiscExceptions,
 };
 

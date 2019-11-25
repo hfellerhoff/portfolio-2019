@@ -40,6 +40,11 @@ const Rules = {
   O_TION: `Single 'o' vowels followed by '-tion' are transcribed as [${IPA.CLOSED_O}].`,
   SINGLE_U: `Single 'u' vowels are transcribed as [${IPA.CLOSED_Y}].`,
   FINAL_E_ES: `Final '-e' and '-es' groups are transcribed as [${IPA.SCHWA}].`,
+  GRAVE_A: `All 'à' vowels with a grave accent are transcribed as [${IPA.BRIGHT_A}].`,
+  CIRCUMFLEX_A: `All 'â' vowels with a circumflex accent are transcribed as [${IPA.DARK_A}].`,
+  ACUTE_E: `All 'é' vowels with an acute accent are transcribed as [${IPA.CLOSED_E}].`,
+  ACCENT_E: `All 'è', 'ê', and 'ë' vowels with a grave accent, circumflex accent, or diaeresis are transcribed as [${IPA.OPEN_E}].`,
+  ACCENT_I: `All 'î' and 'ï' vowels with a circumflex accent or diaeresis are transcribed as [${IPA.CLOSED_I}].`,
 };
 
 /*
