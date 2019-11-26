@@ -1,34 +1,11 @@
+import Letters from './Letters';
+
 export const isVowel = (char: string) => {
-  return (
-    ['a', 'e', 'i', 'o', 'u', 'y', 'œ', 'æ'].indexOf(char.toLowerCase()) !== -1
-  );
+  return Letters.vowels.indexOf(char.toLowerCase()) !== -1;
 };
 
 export const isConsonant = (char: string) => {
-  return (
-    [
-      'q',
-      'w',
-      'r',
-      't',
-      'p',
-      's',
-      'd',
-      'f',
-      'g',
-      'h',
-      'j',
-      'k',
-      'l',
-      'z',
-      'x',
-      'c',
-      'v',
-      'b',
-      'n',
-      'm',
-    ].indexOf(char.toLowerCase()) !== -1
-  );
+  return Letters.consonants.indexOf(char.toLowerCase()) !== -1;
 };
 
 export const isFrontVowel = (char: string) => {
@@ -46,7 +23,15 @@ export const getCharArray = (text: string) => {
 };
 
 export const isSpace = (char: string) => {
-  return char === ' ' || char === '';
+  return char === ' ' || char === '' || char === '\n';
+};
+
+export const isPunctuation = (char: string) => {
+  return Letters.punctuation.indexOf(char.toLowerCase()) !== -1;
+};
+
+export const isEndOfSentence = (char: string) => {
+  return isSpace(char) || isPunctuation(char);
 };
 
 export const getNextWord = (

@@ -59,14 +59,15 @@ const Rules = {
     IPA.F}].`,
   FINAL_EL: `Final '-el(s)' endings are transcribed as [${IPA.OPEN_E +
     IPA.L}].`,
-  FINAL_ET: `Final '-et(s)' endings are transcribed as [${IPA.OPEN_E}]. Note: Final [${IPA.OPEN_E}] vowels are normally pronounced a bit more closed than a typical [${IPA.OPEN_E}].`,
+  FINAL_ET: `Final '-et(s)' endings are transcribed as [${IPA.OPEN_E}]. Note: Final [${IPA.OPEN_E}] vowels are typically pronounced a bit more closed than a typical [${IPA.OPEN_E}].`,
   FINAL_O_SILENTCONSONANT: `Final 'o' vowels followed by a silent consonant are transcribed as [${IPA.CLOSED_O}].`,
   FINAL_IE: `Final '-ie' letter groups are transcribed as [${IPA.CLOSED_I}].`,
   FINAL_AI: `Final '-ai' verb endings are transcribed as [${IPA.CLOSED_E}]. If this word is not a verb, it is most likely transcribed as [${IPA.OPEN_E}].`,
   AI: `All non-final 'ai' and 'aî' vowel clusters are transcribed as [${IPA.OPEN_E}].`,
-  AJ: `All 'ay' vowel clusters are transcribed as [${IPA.OPEN_E +
+  AY: `All 'ay' vowel clusters are transcribed as [${IPA.OPEN_E +
     IPA.J_GLIDE}].`,
   EI: `All 'ei' vowel clusters are transcribed as [${IPA.OPEN_E}].`,
+  VOCALIC_HARMONIZATION_E: `This [${IPA.OPEN_E}] is transcribed as [(${IPA.CLOSED_E})] because of vocalic harmonization, in which an open vowel gets closed to match a closed vowel later on in the word.`,
 };
 
 /*

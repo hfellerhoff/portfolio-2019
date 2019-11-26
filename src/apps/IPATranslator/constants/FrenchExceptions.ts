@@ -1,5 +1,4 @@
-import { IPA, Phoneme } from './Interfaces';
-import IPADisplay from '../components/IPADisplay';
+import { IPA } from './Interfaces';
 
 type ExceptionPhenome = {
   ipa: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Result, Word, Line, Languages, IPA } from '../constants/Interfaces';
+import { Result, Word, Line, Languages } from '../constants/Interfaces';
 import Rules from '../constants/LatinRules';
 import createPDFFromResult from '../util/CreatePDF';
 import copyResult from '../util/CopyResult';

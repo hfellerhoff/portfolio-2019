@@ -1,20 +1,21 @@
 import {
   getCharArray,
   isConsonant,
-  isBackVowel,
   isVowel,
   isFrontVowel,
-  isSpace,
   getNextWord,
+  isPunctuation,
+  isEndOfSentence,
 } from './Helper';
 import { IPA, Result, Phoneme } from '../constants/Interfaces';
 import Rules from '../constants/FrenchRules';
 import Exceptions from '../constants/FrenchExceptions';
+import Notes from '../constants/FrenchNotes';
 
 const ParseFrench = (text: string) => {
   const charArray = getCharArray(text);
-  const firstLetter = charArray[0];
-  const lastLetter = charArray[charArray.length - 1];
+  // const firstLetter = charArray[0];
+  // const lastLetter = charArray[charArray.length - 1];
 
   let result: Result = {
     lines: [
@@ -40,10 +41,10 @@ const ParseFrench = (text: string) => {
     };
     let indexToAdd = 0;
 
-    let previousLetter = '';
-    if (index > 0) {
-      previousLetter = charArray[index - 1];
-    }
+    // let previousLetter = '';
+    // if (index > 0) {
+    //   previousLetter = charArray[index - 1];
+    // }
 
     let nextLetter = '';
     if (index < charArray.length - 1) {
@@ -115,7 +116,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.FRICATIVE_G,
             rule: Rules.G_FRONTVOWEL,
           };
-        } else if (isSpace(nextLetter)) {
+        } else if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'g',
             ipa: '',
@@ -135,7 +136,7 @@ const ParseFrench = (text: string) => {
           ipa: IPA.S,
           rule: Rules.C_SQUIGLE,
         };
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'ç',
             ipa: '',
@@ -156,7 +157,7 @@ const ParseFrench = (text: string) => {
           ipa: IPA.FRICATIVE_G,
           rule: Rules.J,
         };
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'j',
             ipa: '',
@@ -173,7 +174,7 @@ const ParseFrench = (text: string) => {
           };
           indexToAdd = 1;
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'q',
             ipa: '',
@@ -202,7 +203,7 @@ const ParseFrench = (text: string) => {
           ipa: IPA.Z,
           rule: Rules.Z,
         };
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'z',
             ipa: '',
@@ -224,7 +225,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.S,
           };
           indexToAdd = 1;
-        } else if (isSpace(nextLetter)) {
+        } else if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 's',
             ipa: '',
@@ -241,7 +242,7 @@ const ParseFrench = (text: string) => {
       case 't':
         if (
           nextLetter + nextlettersecond + nextletterthird === 'ion' &&
-          isSpace(nextletterfourth)
+          isEndOfSentence(nextletterfourth)
         ) {
           phoneme = {
             text: 't',
@@ -250,7 +251,7 @@ const ParseFrench = (text: string) => {
           };
         } else if (
           nextLetter + nextlettersecond + nextletterthird === 'iel' &&
-          isSpace(nextletterfourth)
+          isEndOfSentence(nextletterfourth)
         ) {
           phoneme = {
             text: 't',
@@ -260,7 +261,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter + nextlettersecond + nextletterthird + nextletterfourth ===
             'ieux' &&
-          isSpace(nextletterfifth)
+          isEndOfSentence(nextletterfifth)
         ) {
           phoneme = {
             text: 't',
@@ -288,7 +289,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.T,
           };
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 't',
             ipa: '',
@@ -310,7 +311,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.X_CONSONANT,
           };
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'x',
             ipa: '',
@@ -340,7 +341,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.P,
           };
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'p',
             ipa: '',
@@ -369,7 +370,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.B,
           };
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'b',
             ipa: '',
@@ -392,7 +393,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.F,
           };
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'f',
             ipa: '',
@@ -415,7 +416,7 @@ const ParseFrench = (text: string) => {
             rule: Rules.V,
           };
         }
-        if (isSpace(nextLetter)) {
+        if (isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'v',
             ipa: '',
@@ -471,22 +472,6 @@ const ParseFrench = (text: string) => {
           };
         }
         break;
-      case 'p':
-        if (nextLetter === 'p') {
-          phoneme = {
-            text: 'pp',
-            ipa: IPA.P,
-            rule: Rules.P,
-          };
-          indexToAdd = 1;
-        } else {
-          phoneme = {
-            text: 'p',
-            ipa: IPA.P,
-            rule: Rules.P,
-          };
-        }
-        break;
       case 'd':
         if (nextLetter === 'd') {
           phoneme = {
@@ -506,7 +491,7 @@ const ParseFrench = (text: string) => {
 
       // VOWELS
       case 'a':
-        if (nextLetter === 'i' && isSpace(nextlettersecond)) {
+        if (nextLetter === 'i' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ai',
             ipa: IPA.CLOSED_E,
@@ -524,7 +509,7 @@ const ParseFrench = (text: string) => {
           phoneme = {
             text: 'ay',
             ipa: IPA.OPEN_E + IPA.J_GLIDE,
-            rule: Rules.AI,
+            rule: Rules.AY,
           };
           indexToAdd = 1;
         } else if (nextLetter === 's') {
@@ -567,7 +552,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 1;
         }
         // FINAL -ed(s)
-        else if (nextLetter === 'd' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'd' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ed',
             ipa: IPA.CLOSED_E,
@@ -577,7 +562,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter === 'd' &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird)
+          isEndOfSentence(nextletterthird)
         ) {
           phoneme = {
             text: 'eds',
@@ -587,7 +572,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 2;
         }
         // FINAL -er(s)
-        else if (nextLetter === 'r' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'r' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'er',
             ipa: IPA.CLOSED_E,
@@ -597,7 +582,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter === 'r' &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird)
+          isEndOfSentence(nextletterthird)
         ) {
           phoneme = {
             text: 'ers',
@@ -607,7 +592,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 2;
         }
         // FINAL -ez(s)
-        else if (nextLetter === 'z' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'z' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ez',
             ipa: IPA.CLOSED_E,
@@ -616,7 +601,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 1;
         }
         // FINAL -ec(s)
-        else if (nextLetter === 'c' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'c' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ec',
             ipa: IPA.OPEN_E + IPA.K,
@@ -626,7 +611,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter === 'c' &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird)
+          isEndOfSentence(nextletterthird)
         ) {
           phoneme = {
             text: 'ecs',
@@ -636,7 +621,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 2;
         }
         // FINAL -ef(s)
-        else if (nextLetter === 'f' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'f' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ef',
             ipa: IPA.OPEN_E + IPA.F,
@@ -646,7 +631,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter === 'f' &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird)
+          isEndOfSentence(nextletterthird)
         ) {
           phoneme = {
             text: 'efs',
@@ -656,7 +641,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 2;
         }
         // FINAL -el(s)
-        else if (nextLetter === 'l' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'l' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'el',
             ipa: IPA.OPEN_E + IPA.L,
@@ -666,7 +651,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter === 'l' &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird)
+          isEndOfSentence(nextletterthird)
         ) {
           phoneme = {
             text: 'els',
@@ -676,7 +661,7 @@ const ParseFrench = (text: string) => {
           indexToAdd = 2;
         }
         // FINAL -et(s)
-        else if (nextLetter === 't' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 't' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'et',
             ipa: IPA.OPEN_E,
@@ -686,7 +671,7 @@ const ParseFrench = (text: string) => {
         } else if (
           nextLetter === 't' &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird)
+          isEndOfSentence(nextletterthird)
         ) {
           phoneme = {
             text: 'ets',
@@ -697,8 +682,8 @@ const ParseFrench = (text: string) => {
         }
         // FINAL -e and -es
         else if (
-          isSpace(nextLetter) ||
-          (nextLetter === 's' && isSpace(nextlettersecond))
+          isEndOfSentence(nextLetter) ||
+          (nextLetter === 's' && isEndOfSentence(nextlettersecond))
         ) {
           phoneme = {
             text: 'e',
@@ -742,9 +727,10 @@ const ParseFrench = (text: string) => {
           ipa: IPA.OPEN_E,
           rule: Rules.ACCENT_E,
         };
+
         break;
       case 'i':
-        if (nextLetter === 'e' && isSpace(nextlettersecond)) {
+        if (nextLetter === 'e' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ie',
             ipa: IPA.CLOSED_I,
@@ -804,7 +790,7 @@ const ParseFrench = (text: string) => {
         // o + final silent consonant
         else if (
           isConsonant(nextLetter) &&
-          isSpace(nextlettersecond) &&
+          isEndOfSentence(nextlettersecond) &&
           nextLetter !== 'c' &&
           nextLetter !== 'r' &&
           nextLetter !== 'f' &&
@@ -822,7 +808,7 @@ const ParseFrench = (text: string) => {
         else if (
           isConsonant(nextLetter) &&
           nextlettersecond === 's' &&
-          isSpace(nextletterthird) &&
+          isEndOfSentence(nextletterthird) &&
           nextLetter !== 'c' &&
           nextLetter !== 'r' &&
           nextLetter !== 'f' &&
@@ -891,7 +877,6 @@ const ParseFrench = (text: string) => {
           syllables: [],
         });
         startOfNewWord = true;
-        // indexToAdd = 1;
         break;
       case '\n':
         result.lines.push({
@@ -901,15 +886,22 @@ const ParseFrench = (text: string) => {
             },
           ],
         });
+        startOfNewWord = true;
         break;
     }
 
     // Check for exceptions
     if (startOfNewWord) {
       const [word, newIndex] = getNextWord(index, charArray);
-      if (word in Exceptions) {
+      let wordNoPunctuation = '';
+      for (let p = 0; p < word.length; p++) {
+        if (!isPunctuation(charArray[p])) {
+          wordNoPunctuation += word[p];
+        }
+      }
+      if (wordNoPunctuation in Exceptions) {
         phoneme = {
-          ...Exceptions[word],
+          ...Exceptions[wordNoPunctuation],
           text: word,
         };
         index = newIndex;
@@ -921,8 +913,66 @@ const ParseFrench = (text: string) => {
 
     const currentLine = result.lines[result.lines.length - 1];
     const currentWord = currentLine.words[currentLine.words.length - 1];
+
+    // Analize final IPA syllable
+    // ex. Final open e is more closed
+    const previousSyllable =
+      currentWord.syllables[currentWord.syllables.length - 1];
+    if (previousSyllable && isEndOfSentence(nextLetter)) {
+      const previousIPA = previousSyllable.ipa[previousSyllable.ipa.length - 1];
+      if (previousIPA) {
+        if (previousIPA === IPA.OPEN_E) {
+          previousSyllable.rule += Notes.FINAL_E_HALFCLOSED;
+        }
+      }
+    } else if (isEndOfSentence(nextLetter)) {
+      if (phoneme.ipa[phoneme.ipa.length - 1]) {
+        if (phoneme.ipa[phoneme.ipa.length - 1] === IPA.OPEN_E) {
+          phoneme.rule += Notes.FINAL_E_HALFCLOSED;
+        }
+      }
+    }
+
     currentWord.syllables.push(phoneme);
     previousPhoneme = phoneme.ipa[phoneme.ipa.length - 1];
+
+    // Analyze vocalic harmonization
+    if (
+      isEndOfSentence(nextLetter) ||
+      (indexToAdd === 1 && isEndOfSentence(nextlettersecond)) ||
+      (indexToAdd === 2 && isEndOfSentence(nextletterthird)) ||
+      (indexToAdd === 3 && isEndOfSentence(nextletterfourth))
+    ) {
+      let closedVowelFound = false;
+      for (let j = currentWord.syllables.length - 1; j >= 0; j--) {
+        const currentIPA = currentWord.syllables[j];
+        for (let k = currentIPA.ipa.length - 1; k >= 0; k--) {
+          const symbol = currentIPA.ipa[k];
+          if (
+            symbol === IPA.CLOSED_E ||
+            symbol === IPA.CLOSED_I ||
+            symbol === IPA.CLOSED_Y
+          ) {
+            closedVowelFound = true;
+          } else if (closedVowelFound) {
+            if (
+              symbol === IPA.OPEN_E &&
+              (currentIPA.text === 'ai' ||
+                currentIPA.text === 'aî' ||
+                currentIPA.text === 'ay' ||
+                currentIPA.text === 'ei' ||
+                currentIPA.text === 'ê')
+            ) {
+              currentWord.syllables[j] = {
+                ...currentWord.syllables[j],
+                ipa: `(${IPA.CLOSED_E})`,
+                rule: Rules.VOCALIC_HARMONIZATION_E,
+              };
+            }
+          }
+        }
+      }
+    }
   }
   return result;
 };
