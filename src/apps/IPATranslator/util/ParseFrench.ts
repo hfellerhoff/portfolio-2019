@@ -487,10 +487,47 @@ const ParseFrench = (text: string) => {
           };
         }
         break;
+      case 'd':
+        if (nextLetter === 'd') {
+          phoneme = {
+            text: 'd',
+            ipa: IPA.D,
+            rule: Rules.D,
+          };
+          indexToAdd = 1;
+        } else {
+          phoneme = {
+            text: 'd',
+            ipa: IPA.D,
+            rule: Rules.D,
+          };
+        }
+        break;
 
       // VOWELS
       case 'a':
-        if (nextLetter === 's') {
+        if (nextLetter === 'i' && isSpace(nextlettersecond)) {
+          phoneme = {
+            text: 'ai',
+            ipa: IPA.CLOSED_E,
+            rule: Rules.FINAL_AI,
+          };
+          indexToAdd = 1;
+        } else if (nextLetter === 'i' || nextLetter === 'î') {
+          phoneme = {
+            text: 'a' + nextLetter,
+            ipa: IPA.OPEN_E,
+            rule: Rules.AI,
+          };
+          indexToAdd = 1;
+        } else if (nextLetter === 'y') {
+          phoneme = {
+            text: 'ay',
+            ipa: IPA.OPEN_E + IPA.J_GLIDE,
+            rule: Rules.AI,
+          };
+          indexToAdd = 1;
+        } else if (nextLetter === 's') {
           phoneme = {
             text: 'as',
             ipa: IPA.BRIGHT_A,
@@ -520,8 +557,17 @@ const ParseFrench = (text: string) => {
         };
         break;
       case 'e':
+        // ei
+        if (nextLetter === 'i') {
+          phoneme = {
+            text: 'ei',
+            ipa: IPA.OPEN_E,
+            rule: Rules.EI,
+          };
+          indexToAdd = 1;
+        }
         // FINAL -ed(s)
-        if (nextLetter === 'd' && isSpace(nextlettersecond)) {
+        else if (nextLetter === 'd' && isSpace(nextlettersecond)) {
           phoneme = {
             text: 'ed',
             ipa: IPA.CLOSED_E,

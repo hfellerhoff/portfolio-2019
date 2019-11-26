@@ -25,6 +25,7 @@ const Rules = {
   B: `Single and double 'b' consonants are transcribed as [${IPA.B}].`,
   F: `Single and double 'f' consonants are transcribed as [${IPA.F}].`,
   V: `Single and double 'v' consonants are transcribed as [${IPA.V}].`,
+  D: `Single and double 'd' consonants are transcribed as [${IPA.D}].`,
   INTERVOCALIC_S: `Intervocalic 's' consonants are transcribed as [${IPA.Z}].`,
   FINAL_TION: `A 't' consonant in a final '-tion', '-tiel', or '-tieux' letter group is transcribed as [${IPA.S}].`,
   TH: `A 'th' consonant group is transcribed as [${IPA.T}].`,
@@ -61,6 +62,11 @@ const Rules = {
   FINAL_ET: `Final '-et(s)' endings are transcribed as [${IPA.OPEN_E}]. Note: Final [${IPA.OPEN_E}] vowels are normally pronounced a bit more closed than a typical [${IPA.OPEN_E}].`,
   FINAL_O_SILENTCONSONANT: `Final 'o' vowels followed by a silent consonant are transcribed as [${IPA.CLOSED_O}].`,
   FINAL_IE: `Final '-ie' letter groups are transcribed as [${IPA.CLOSED_I}].`,
+  FINAL_AI: `Final '-ai' verb endings are transcribed as [${IPA.CLOSED_E}]. If this word is not a verb, it is most likely transcribed as [${IPA.OPEN_E}].`,
+  AI: `All non-final 'ai' and 'aî' vowel clusters are transcribed as [${IPA.OPEN_E}].`,
+  AJ: `All 'ay' vowel clusters are transcribed as [${IPA.OPEN_E +
+    IPA.J_GLIDE}].`,
+  EI: `All 'ei' vowel clusters are transcribed as [${IPA.OPEN_E}].`,
 };
 
 /*
