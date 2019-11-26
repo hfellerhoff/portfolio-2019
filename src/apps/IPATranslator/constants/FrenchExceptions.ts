@@ -13,6 +13,9 @@ const Rules = {
   HARD_CH: `This word is an exception in which the 'ch' consonant group becomes a plosive [${IPA.K}].`,
   BRIGHT_A: `This word is an exception, and is transcribed with a bright [${IPA.BRIGHT_A}].`,
   FINAL_AI: `This word is an exception, and is transcribed with a (semi-open) [${IPA.OPEN_E}].`,
+  AVOIR: `Conjugated forms of 'avoir' are transcribed with a [${IPA.CLOSED_Y}].`,
+  MEDIAL_ILL: `This word is an exception, as it is not transcribed with a [${IPA.J_GLIDE}] as typically found in words with a medial 'ill'.`,
+  DARK_OY_A: `While not critical for Lyric Diction, this word is an exception, as it transcribes the bright [${IPA.BRIGHT_A}] from the 'oi' of the word as a dark [${IPA.DARK_A}].`,
 };
 
 const MerVerExceptions: ExceptionDictionary = {
@@ -140,6 +143,91 @@ const FinalAiExceptions: ExceptionDictionary = {
   },
 };
 
+const AvoirExceptions: ExceptionDictionary = {
+  eu: {
+    ipa: IPA.CLOSED_Y,
+    rule: Rules.AVOIR,
+  },
+  eus: {
+    ipa: IPA.CLOSED_Y,
+    rule: Rules.AVOIR,
+  },
+  eut: {
+    ipa: IPA.CLOSED_Y,
+    rule: Rules.AVOIR,
+  },
+  eût: {
+    ipa: IPA.CLOSED_Y,
+    rule: Rules.AVOIR,
+  },
+  eurent: {
+    ipa: IPA.CLOSED_Y + IPA.FLIPPED_R + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eusse: {
+    ipa: IPA.CLOSED_Y + IPA.S + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eussent: {
+    ipa: IPA.CLOSED_Y + IPA.S + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eutes: {
+    ipa: IPA.CLOSED_Y + IPA.T + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eûtes: {
+    ipa: IPA.CLOSED_Y + IPA.T + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eûmes: {
+    ipa: IPA.CLOSED_Y + IPA.M + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eues: {
+    ipa: IPA.CLOSED_Y + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+  eue: {
+    ipa: IPA.CLOSED_Y + IPA.SCHWA,
+    rule: Rules.AVOIR,
+  },
+};
+
+const MedialIllExceptions: ExceptionDictionary = {
+  mille: {
+    ipa: 'mil' + IPA.SCHWA,
+    rule: Rules.MEDIAL_ILL,
+  },
+  ville: {
+    ipa: 'vil' + IPA.SCHWA,
+    rule: Rules.MEDIAL_ILL,
+  },
+  tranquille: {
+    ipa: 't' + IPA.FLIPPED_R + IPA.NASAL_A + 'kil' + IPA.SCHWA,
+    rule: Rules.MEDIAL_ILL,
+  },
+  oscille: {
+    ipa: IPA.OPEN_O + 'sil' + IPA.SCHWA,
+    rule: Rules.MEDIAL_ILL,
+  },
+};
+
+const DarkOyAExceptions: ExceptionDictionary = {
+  trois: {
+    ipa: 't' + IPA.FLIPPED_R + 'w' + IPA.DARK_A,
+    rule: Rules.DARK_OY_A,
+  },
+  bois: {
+    ipa: 'bw' + IPA.DARK_A,
+    rule: Rules.DARK_OY_A,
+  },
+  voix: {
+    ipa: 'vw' + IPA.DARK_A,
+    rule: Rules.DARK_OY_A,
+  },
+};
+
 const MiscExceptions: ExceptionDictionary = {
   et: {
     ipa: 'e',
@@ -196,6 +284,9 @@ const Exceptions: ExceptionDictionary = {
   ...OpenErExceptions,
   ...ChExceptions,
   ...FinalAiExceptions,
+  ...AvoirExceptions,
+  ...MedialIllExceptions,
+  ...DarkOyAExceptions,
   ...MiscExceptions,
 };
 

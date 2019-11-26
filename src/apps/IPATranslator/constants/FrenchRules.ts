@@ -68,6 +68,26 @@ const Rules = {
     IPA.J_GLIDE}].`,
   EI: `All 'ei' vowel clusters are transcribed as [${IPA.OPEN_E}].`,
   VOCALIC_HARMONIZATION_E: `This [${IPA.OPEN_E}] is transcribed as [(${IPA.CLOSED_E})] because of vocalic harmonization, in which an open vowel gets closed to match a closed vowel later on in the word.`,
+  AU_EAU: `'au', 'aux', 'eau', and 'eau' vowel clusters are transcribed as [${IPA.CLOSED_O}].`,
+  AUR: `'au' vowel clusters follwed by an 'r' are transcribed as [${IPA.OPEN_O}].`,
+  EU_PRONOUNCEDCONSONSANT: `'eu', 'œ', and 'œu' vowel clusters followed by a pronounced consonant are transcribed as [${IPA.OPEN_MIXED_O}].`,
+  MEDIAL_UE: `Medial 'ue' vowel clusters are transcribed as [${IPA.OPEN_MIXED_O}].`,
+  EU_S_VOWEL: `'eu' vowel clusters followed by an 's' and a vowel are transcribed as [${IPA.CLOSED_MIXED_O}].`,
+  FINAL_EU: `Final '-eu' vowel clusters are transcribed as [${IPA.CLOSED_MIXED_O}].`,
+  FINAL_EU_SILENTCONSONANT: `Final '-eu' and '-œu' vowel clusters followed by a silent consonant are transcribed as [${IPA.CLOSED_MIXED_O}].`,
+  VOCALIC_HARMONIZATION_O: `This [${IPA.OPEN_MIXED_O}] is transcribed as [(${IPA.CLOSED_MIXED_O})] because of vocalic harmonization, in which an open vowel gets closed to match a closed vowel later on in the word.`,
+  OU: `'ou', 'où', and 'oû' vowel clusters are transcribed as [${IPA.CLOSED_U}].`,
+  IY_VOWEL: `'i' and 'y' vowels followed by a vowel are transcribed as [${IPA.J_GLIDE}].`,
+  OU_VOWEL: `'ou' vowel clusters followed by a vowel are transcribed as [${IPA.W_GLIDE}].`,
+  U_VOWEL: `'u' vowels followed by a vowel are transcribed as [${IPA.Y_GLIDE}].`,
+  MEDIAL_ILL_VOWEL: `Medial 'ill' letter groups preceded by a vowel are transcribed as [${IPA.J_GLIDE}].`,
+  MEDIAL_ILL_CONSONANT: `Medial 'ill' letter groups preceded by a consonant are transcribed as [${IPA.CLOSED_I +
+    IPA.J_GLIDE}].`,
+  VOWEL_IL: `'il' letter groups preceded by a vowel are transcribed as [${IPA.J_GLIDE}].`,
+  OI: `'oi' vowel clusters are transcribed as [${IPA.W_GLIDE + IPA.BRIGHT_A}].`,
+  OY: `'oy' vowel clusters are transcribed as [${IPA.W_GLIDE +
+    IPA.BRIGHT_A +
+    IPA.J_GLIDE}].`,
 };
 
 /*
@@ -75,11 +95,10 @@ Rules to implement:
 - Consonants that are doubled in spelling are not doubled
   in transcription except for initial ill, irr, inn, imm
 - Consonant n silent when preceded by a nasal vowel.
-- Vocalic harmonization
-- Vowel clusters
-- Glides (semivowels)
 - French schwa
 - Nasals
+- No final consonant on multiple silent consonants (ex. doigts)
+- Figure out rule with (joie)
 */
 
 export default Rules;

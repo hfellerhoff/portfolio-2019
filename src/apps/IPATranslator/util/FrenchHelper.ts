@@ -1,0 +1,34 @@
+import { isConsonant, isEndOfSentence, isVowel } from './Helper';
+
+const PRONOUNCED_CONSONANTS = ['c', 'r', 'f', 'l'];
+
+export const isPronouncedConsonant = (consonant: string, isFinal: boolean) => {
+  if (isFinal) {
+    return ['c', 'r', 'f', 'l'].indexOf(consonant.toLowerCase()) !== -1;
+  } else {
+    return isConsonant(consonant);
+  }
+};
+
+export const isGlideFollowing = (
+  letter: string,
+  nextletter: string,
+  nextlettersecond: string,
+  nextletterthird: string,
+  nextletterfourth: string
+) => {
+  // console.log('----');
+  // console.log(nextletter);
+  // console.log(nextlettersecond);
+  // console.log(nextletterthird);
+  const isMedialILL =
+    nextletter === 'i' &&
+    nextlettersecond === 'l' &&
+    nextletterthird === 'l' &&
+    !isEndOfSentence(nextletterfourth);
+
+  const isVowelIL =
+    isVowel(letter) && nextletter === 'i' && nextlettersecond === 'l';
+
+  return isMedialILL || isVowelIL;
+};

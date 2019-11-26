@@ -6,16 +6,16 @@ import {
   getNextWord,
   isPunctuation,
   isEndOfSentence,
+  isBackVowel,
 } from './Helper';
 import { IPA, Result, Phoneme } from '../constants/Interfaces';
 import Rules from '../constants/FrenchRules';
 import Exceptions from '../constants/FrenchExceptions';
 import Notes from '../constants/FrenchNotes';
+import { isPronouncedConsonant, isGlideFollowing } from './FrenchHelper';
 
 const ParseFrench = (text: string) => {
   const charArray = getCharArray(text);
-  // const firstLetter = charArray[0];
-  // const lastLetter = charArray[charArray.length - 1];
 
   let result: Result = {
     lines: [
@@ -87,7 +87,7 @@ const ParseFrench = (text: string) => {
             ipa: IPA.S,
             rule: Rules.C_FRONTVOWEL,
           };
-        } else {
+        } else if (isBackVowel(nextLetter)) {
           phoneme = {
             text: 'c',
             ipa: IPA.K,
@@ -166,13 +166,19 @@ const ParseFrench = (text: string) => {
         }
         break;
       case 'q':
-        if (nextLetter === 'u') {
+        if (nextLetter === 'u' && nextlettersecond !== 'e') {
           phoneme = {
             text: 'qu',
             ipa: IPA.K,
             rule: Rules.QU,
           };
           indexToAdd = 1;
+        } else if (nextLetter === 'u') {
+          phoneme = {
+            text: 'q',
+            ipa: IPA.K,
+            rule: Rules.QU,
+          };
         }
         if (isEndOfSentence(nextLetter)) {
           phoneme = {
@@ -519,6 +525,27 @@ const ParseFrench = (text: string) => {
             rule: Rules.FINAL_AS,
           };
           indexToAdd = 1;
+        } else if (nextLetter === 'u' && nextlettersecond === 'x') {
+          phoneme = {
+            text: 'aux',
+            ipa: IPA.CLOSED_O,
+            rule: Rules.AU_EAU,
+          };
+          indexToAdd = 2;
+        } else if (nextLetter === 'u' && nextlettersecond === 'r') {
+          phoneme = {
+            text: 'au',
+            ipa: IPA.OPEN_O,
+            rule: Rules.AUR,
+          };
+          indexToAdd = 1;
+        } else if (nextLetter === 'u') {
+          phoneme = {
+            text: 'au',
+            ipa: IPA.CLOSED_O,
+            rule: Rules.AU_EAU,
+          };
+          indexToAdd = 1;
         } else {
           phoneme = {
             text: 'a',
@@ -543,11 +570,100 @@ const ParseFrench = (text: string) => {
         break;
       case 'e':
         // ei
-        if (nextLetter === 'i') {
+        if (
+          nextLetter === 'i' &&
+          !isGlideFollowing(
+            letter,
+            nextLetter,
+            nextlettersecond,
+            nextletterthird,
+            nextletterfourth
+          )
+        ) {
           phoneme = {
             text: 'ei',
             ipa: IPA.OPEN_E,
             rule: Rules.EI,
+          };
+          indexToAdd = 1;
+        }
+        // eu + s + vowel
+        else if (
+          nextLetter === 'u' &&
+          nextlettersecond === 's' &&
+          isVowel(nextletterthird)
+        ) {
+          phoneme = {
+            text: 'eu',
+            ipa: IPA.CLOSED_MIXED_O,
+            rule: Rules.EU_S_VOWEL,
+          };
+          indexToAdd = 1;
+        }
+        // final -eu
+        else if (nextLetter === 'u' && isEndOfSentence(nextlettersecond)) {
+          phoneme = {
+            text: 'eu',
+            ipa: IPA.CLOSED_MIXED_O,
+            rule: Rules.FINAL_EU,
+          };
+          indexToAdd = 1;
+        }
+        // final -eu + final silent consonant
+        else if (
+          nextLetter === 'u' &&
+          nextlettersecond !== 'c' &&
+          nextlettersecond !== 'r' &&
+          nextlettersecond !== 'f' &&
+          nextlettersecond !== 'l' &&
+          isEndOfSentence(nextletterthird)
+        ) {
+          phoneme = {
+            text: 'eu' + nextlettersecond,
+            ipa: IPA.CLOSED_MIXED_O,
+            rule: Rules.FINAL_EU_SILENTCONSONANT,
+          };
+          indexToAdd = 2;
+        }
+        // eau and eaux
+        else if (
+          nextLetter === 'a' &&
+          nextlettersecond === 'u' &&
+          nextletterthird === 'x'
+        ) {
+          phoneme = {
+            text: 'eaux',
+            ipa: IPA.CLOSED_O,
+            rule: Rules.AU_EAU,
+          };
+          indexToAdd = 3;
+        } else if (nextLetter === 'a' && nextlettersecond === 'u') {
+          phoneme = {
+            text: 'eau',
+            ipa: IPA.CLOSED_O,
+            rule: Rules.AU_EAU,
+          };
+          indexToAdd = 2;
+        }
+        // eu + pronounced consonant
+        else if (
+          nextLetter === 'u' &&
+          (isPronouncedConsonant(
+            nextlettersecond,
+            isEndOfSentence(nextletterthird)
+          ) ||
+            isGlideFollowing(
+              letter,
+              nextLetter,
+              nextlettersecond,
+              nextletterthird,
+              nextletterfourth
+            ))
+        ) {
+          phoneme = {
+            text: 'eu',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.EU_PRONOUNCEDCONSONSANT,
           };
           indexToAdd = 1;
         }
@@ -700,6 +816,66 @@ const ParseFrench = (text: string) => {
           };
         }
         break;
+      case 'œ':
+        // final -œu + final silent consonant
+        if (
+          nextLetter === 'u' &&
+          nextlettersecond !== 'c' &&
+          nextlettersecond !== 'r' &&
+          nextlettersecond !== 'f' &&
+          nextlettersecond !== 'l' &&
+          isEndOfSentence(nextletterthird)
+        ) {
+          phoneme = {
+            text: 'œu' + nextlettersecond,
+            ipa: IPA.CLOSED_MIXED_O,
+            rule: Rules.FINAL_EU_SILENTCONSONANT,
+          };
+          indexToAdd = 2;
+        }
+        // œu + pronounced consonant
+        else if (
+          nextLetter === 'u' &&
+          (isPronouncedConsonant(
+            nextlettersecond,
+            isEndOfSentence(nextletterthird)
+          ) ||
+            isGlideFollowing(
+              letter,
+              nextLetter,
+              nextlettersecond,
+              nextletterthird,
+              nextletterfourth
+            ))
+        ) {
+          phoneme = {
+            text: 'œu',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.EU_PRONOUNCEDCONSONSANT,
+          };
+          indexToAdd = 1;
+        }
+        // œ + pronounced consonant
+        else if (
+          isPronouncedConsonant(
+            nextlettersecond,
+            isEndOfSentence(nextletterthird) ||
+              isGlideFollowing(
+                letter,
+                nextLetter,
+                nextlettersecond,
+                nextletterthird,
+                nextletterfourth
+              )
+          )
+        ) {
+          phoneme = {
+            text: 'œ',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.EU_PRONOUNCEDCONSONSANT,
+          };
+        }
+        break;
       case 'é':
         phoneme = {
           text: 'é',
@@ -730,13 +906,53 @@ const ParseFrench = (text: string) => {
 
         break;
       case 'i':
-        if (nextLetter === 'e' && isEndOfSentence(nextlettersecond)) {
+        // Medial ill
+        if (
+          !isEndOfSentence(previousPhoneme) &&
+          nextLetter === 'l' &&
+          nextlettersecond === 'l' &&
+          !isEndOfSentence(nextletterthird)
+        ) {
+          console.log('ran');
+          if (isConsonant(previousPhoneme)) {
+            phoneme = {
+              text: 'ill',
+              ipa: IPA.CLOSED_I + IPA.J_GLIDE,
+              rule: Rules.MEDIAL_ILL_CONSONANT,
+            };
+            indexToAdd = 2;
+          } else if (isVowel(previousPhoneme)) {
+            phoneme = {
+              text: 'ill',
+              ipa: IPA.J_GLIDE,
+              rule: Rules.MEDIAL_ILL_VOWEL,
+            };
+            indexToAdd = 2;
+          }
+        }
+        // vowel + il
+        else if (isVowel(previousPhoneme) && nextLetter === 'l') {
+          phoneme = {
+            text: 'il',
+            ipa: IPA.J_GLIDE,
+            rule: Rules.VOWEL_IL,
+          };
+          indexToAdd = 1;
+        }
+        // Final -ie
+        else if (nextLetter === 'e' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ie',
             ipa: IPA.CLOSED_I,
             rule: Rules.FINAL_IE,
           };
           indexToAdd = 1;
+        } else if (isVowel(nextLetter)) {
+          phoneme = {
+            text: 'i',
+            ipa: IPA.J_GLIDE,
+            rule: Rules.IY_VOWEL,
+          };
         } else {
           phoneme = {
             text: 'i',
@@ -761,15 +977,95 @@ const ParseFrench = (text: string) => {
         };
         break;
       case 'y':
-        phoneme = {
-          text: 'y',
-          ipa: IPA.CLOSED_I,
-          rule: Rules.SINGLE_I_OR_Y,
-        };
+        if (isVowel(nextLetter)) {
+          phoneme = {
+            text: 'y',
+            ipa: IPA.J_GLIDE,
+            rule: Rules.IY_VOWEL,
+          };
+        } else {
+          phoneme = {
+            text: 'y',
+            ipa: IPA.CLOSED_I,
+            rule: Rules.SINGLE_I_OR_Y,
+          };
+        }
+
         break;
       case 'o':
-        // o + tion
+        // final -oeu + final silent consonant
         if (
+          nextLetter === 'e' &&
+          nextlettersecond === 'u' &&
+          nextletterthird !== 'c' &&
+          nextletterthird !== 'r' &&
+          nextletterthird !== 'f' &&
+          nextletterthird !== 'l' &&
+          isEndOfSentence(nextletterfourth)
+        ) {
+          phoneme = {
+            text: 'oeu' + nextletterthird,
+            ipa: IPA.CLOSED_MIXED_O,
+            rule: Rules.FINAL_EU_SILENTCONSONANT,
+          };
+          indexToAdd = 3;
+        }
+        // oeu + pronounced consonant
+        else if (
+          nextLetter === 'e' &&
+          nextlettersecond === 'u' &&
+          (isPronouncedConsonant(
+            nextletterthird,
+            isEndOfSentence(nextletterthird)
+          ) ||
+            isGlideFollowing(
+              nextLetter,
+              nextlettersecond,
+              nextletterthird,
+              nextletterfourth,
+              nextletterfifth
+            ))
+        ) {
+          phoneme = {
+            text: 'oeu',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.EU_PRONOUNCEDCONSONSANT,
+          };
+          indexToAdd = 2;
+        }
+        // oe + pronounced consonant
+        else if (
+          nextLetter === 'e' &&
+          (isPronouncedConsonant(
+            nextlettersecond,
+            isEndOfSentence(nextletterthird)
+          ) ||
+            isGlideFollowing(
+              nextLetter,
+              nextlettersecond,
+              nextletterthird,
+              nextletterfourth,
+              nextletterfifth
+            ))
+        ) {
+          phoneme = {
+            text: 'oe',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.EU_PRONOUNCEDCONSONSANT,
+          };
+          indexToAdd = 1;
+        }
+        // ou + vowel
+        else if (nextLetter === 'u' && isVowel(nextlettersecond)) {
+          phoneme = {
+            text: 'ou',
+            ipa: IPA.W_GLIDE,
+            rule: Rules.OU_VOWEL,
+          };
+          indexToAdd = 1;
+        }
+        // o + tion
+        else if (
           nextLetter + nextlettersecond + nextletterthird + nextletterfourth ===
           'tion'
         ) {
@@ -778,6 +1074,24 @@ const ParseFrench = (text: string) => {
             ipa: IPA.CLOSED_O,
             rule: Rules.O_TION,
           };
+        }
+        // Spelling 'oi'
+        else if (nextLetter === 'i') {
+          phoneme = {
+            text: 'oi',
+            ipa: IPA.W_GLIDE + IPA.BRIGHT_A,
+            rule: Rules.OI,
+          };
+          indexToAdd = 1;
+        }
+        // Spelling 'oy'
+        else if (nextLetter === 'y') {
+          phoneme = {
+            text: 'oy',
+            ipa: IPA.W_GLIDE + IPA.BRIGHT_A + IPA.J_GLIDE,
+            rule: Rules.OY,
+          };
+          indexToAdd = 1;
         }
         // If next sound is [z]
         else if (nextLetter === 's' && isVowel(nextlettersecond)) {
@@ -821,6 +1135,33 @@ const ParseFrench = (text: string) => {
           };
           indexToAdd = 2;
         }
+        // ou
+        else if (nextLetter === 'u') {
+          phoneme = {
+            text: 'ou',
+            ipa: IPA.CLOSED_U,
+            rule: Rules.OU,
+          };
+          indexToAdd = 1;
+        }
+        // où
+        else if (nextLetter === 'ù') {
+          phoneme = {
+            text: 'où',
+            ipa: IPA.CLOSED_U,
+            rule: Rules.OU,
+          };
+          indexToAdd = 1;
+        }
+        // oû
+        else if (nextLetter === 'û') {
+          phoneme = {
+            text: 'oû',
+            ipa: IPA.CLOSED_U,
+            rule: Rules.OU,
+          };
+          indexToAdd = 1;
+        }
         // If followed by pronounced consonant
         else if (isConsonant(nextLetter) && nextLetter !== 'h') {
           phoneme = {
@@ -838,11 +1179,31 @@ const ParseFrench = (text: string) => {
         };
         break;
       case 'u':
-        phoneme = {
-          text: 'u',
-          ipa: IPA.CLOSED_Y,
-          rule: Rules.SINGLE_U,
-        };
+        if (
+          nextLetter === 'e' &&
+          !isEndOfSentence(previousPhoneme) &&
+          !isEndOfSentence(nextlettersecond)
+        ) {
+          phoneme = {
+            text: 'ue',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.MEDIAL_UE,
+          };
+          indexToAdd = 1;
+        } else if (isVowel(nextLetter)) {
+          phoneme = {
+            text: 'u',
+            ipa: IPA.Y_GLIDE,
+            rule: Rules.U_VOWEL,
+          };
+        } else {
+          phoneme = {
+            text: 'u',
+            ipa: IPA.CLOSED_Y,
+            rule: Rules.SINGLE_U,
+          };
+        }
+
         break;
       case 'û':
         phoneme = {
@@ -943,7 +1304,8 @@ const ParseFrench = (text: string) => {
       (indexToAdd === 2 && isEndOfSentence(nextletterthird)) ||
       (indexToAdd === 3 && isEndOfSentence(nextletterfourth))
     ) {
-      let closedVowelFound = false;
+      let closedFrontVowelFound = false;
+      let closedMixedVowelFound = false;
       for (let j = currentWord.syllables.length - 1; j >= 0; j--) {
         const currentIPA = currentWord.syllables[j];
         for (let k = currentIPA.ipa.length - 1; k >= 0; k--) {
@@ -953,8 +1315,12 @@ const ParseFrench = (text: string) => {
             symbol === IPA.CLOSED_I ||
             symbol === IPA.CLOSED_Y
           ) {
-            closedVowelFound = true;
-          } else if (closedVowelFound) {
+            closedFrontVowelFound = true;
+          } else if (symbol === IPA.CLOSED_MIXED_O) {
+            closedMixedVowelFound = true;
+          }
+
+          if (closedFrontVowelFound) {
             if (
               symbol === IPA.OPEN_E &&
               (currentIPA.text === 'ai' ||
@@ -969,6 +1335,14 @@ const ParseFrench = (text: string) => {
                 rule: Rules.VOCALIC_HARMONIZATION_E,
               };
             }
+          } else if (closedMixedVowelFound) {
+            if (symbol === IPA.OPEN_MIXED_O) {
+              currentWord.syllables[j] = {
+                ...currentWord.syllables[j],
+                ipa: `(${IPA.CLOSED_MIXED_O})`,
+                rule: Rules.VOCALIC_HARMONIZATION_E,
+              };
+            }
           }
         }
       }
@@ -978,3 +1352,12 @@ const ParseFrench = (text: string) => {
 };
 
 export default ParseFrench;
+// Med
+// else if (nextLetter === 'u' && !isEndOfSentence(previousPhoneme) && !isEndOfSentence(nextlettersecond)) {
+//   phoneme = {
+//     text: 'eu',
+//     ipa: IPA.CLOSED_MIXED_O,
+//     rule: Rules.FINAL_EU,
+//   };
+//   indexToAdd = 1;
+// }

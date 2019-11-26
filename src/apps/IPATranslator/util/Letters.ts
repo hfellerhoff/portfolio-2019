@@ -1,9 +1,28 @@
+import { IPA } from '../constants/Interfaces';
+
 const Letters = {
-  vowels: ['a', 'e', 'i', 'o', 'u', 'y', 'œ', 'æ'],
+  vowels: [
+    'a',
+    'e',
+    'i',
+    'o',
+    'u',
+    'y',
+    'œ',
+    'æ',
+    IPA.CLOSED_MIXED_O,
+    IPA.OPEN_MIXED_O,
+    IPA.OPEN_Y,
+    IPA.OPEN_E,
+  ],
   consonants: [
     'q',
     'w',
     'r',
+    IPA.FLIPPED_R,
+    IPA.J_GLIDE,
+    IPA.W_GLIDE,
+    IPA.Y_GLIDE,
     't',
     'p',
     's',
