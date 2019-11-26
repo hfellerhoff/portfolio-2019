@@ -27,7 +27,7 @@ export enum IPA {
   CLOSED_I = 'i',
   OPEN_I = 'I',
   CLOSED_E = 'e',
-  OPEN_E = 'ε',
+  OPEN_E = 'ɛ',
   NASAL_E = 'ɛ̃',
   CLOSED_U = 'u',
   OPEN_U = 'ʊ',

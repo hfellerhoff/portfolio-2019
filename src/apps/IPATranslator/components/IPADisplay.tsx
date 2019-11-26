@@ -1,9 +1,12 @@
 import React from 'react';
-import { Result, Word, Line } from '../constants/Interfaces';
+import { Result, Word, Line, Languages, IPA } from '../constants/Interfaces';
 import Rules from '../constants/LatinRules';
+import createPDFFromResult from '../util/CreatePDF';
+import copyResult from '../util/CopyResult';
 
 interface Props {
   result: Result;
+  language: Languages;
 }
 
 type PhonemeProps = {
@@ -92,18 +95,33 @@ const ResultElement = ({ result }: DisplayProps) => {
     const lineElement = <LineElement line={line} key={index} />;
     lineElements.push(lineElement);
   });
-  return <div>{lineElements}</div>;
+  return <div id='result'>{lineElements}</div>;
 };
 
-const IPADisplay: React.FC<Props> = ({ result }: Props) => {
+const IPADisplay: React.FC<Props> = ({ result, language }: Props) => {
   return (
     <>
       <h2 className='ipa header body' style={{ marginTop: 30 }}>
         Transcription result:{' '}
       </h2>
-      <div className='ipa result'>
+      <div className='ipa result display'>
         <ResultElement result={result} />
       </div>
+      <div className='ipa result button-container'>
+        <button
+          onClick={() => createPDFFromResult(language, result)}
+          className='ipa result button'
+        >
+          Export as PDF
+        </button>
+        <button
+          onClick={() => copyResult(result)}
+          className='ipa result button'
+        >
+          Copy
+        </button>
+      </div>
+
       <p className='ipa details'>
         <em>
           <strong>Hint:</strong> Hover over IPA to get transcription rules!

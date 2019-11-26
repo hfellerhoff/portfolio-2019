@@ -47,7 +47,7 @@ const App: React.FC = () => {
         language={language}
         setLanguage={setLanguage}
       />
-      <IPADisplay result={parseText(inputText)} />
+      <IPADisplay result={parseText(inputText)} language={language} />
       <Description onSampleTranscription={onSampleTranscription} />
       <Footer />
     </div>
