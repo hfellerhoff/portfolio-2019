@@ -1,4 +1,5 @@
 import { IPA } from './Interfaces';
+import Notes from './FrenchNotes';
 
 type ExceptionPhenome = {
   ipa: string;
@@ -233,6 +234,14 @@ const MiscExceptions: ExceptionDictionary = {
     ipa: 'e',
     rule: `'et' (French for 'and') is pronounced as [e] to make a distinction between it and 'es/est' (French for 'is'), which are pronounced [ε].`,
   },
+  dessous: {
+    ipa: 'd' + IPA.SCHWA + 'su',
+    rule: Rules.EXCEPTION,
+  },
+  dessus: {
+    ipa: 'd' + IPA.SCHWA + 'sy',
+    rule: Rules.EXCEPTION,
+  },
   femme: {
     ipa: 'famə',
     rule: Rules.BRIGHT_A,
@@ -261,6 +270,10 @@ const MiscExceptions: ExceptionDictionary = {
     ipa: 'm(e)zõ',
     rule: Rules.EXCEPTION,
   },
+  monsieur: {
+    ipa: 'm' + IPA.SCHWA + 'sj' + IPA.CLOSED_MIXED_O,
+    rule: Rules.EXCEPTION,
+  },
   o: {
     ipa: 'o',
     rule: Rules.EXCEPTION,
@@ -272,6 +285,14 @@ const MiscExceptions: ExceptionDictionary = {
   pays: {
     ipa: 'pei',
     rule: Rules.EXCEPTION,
+  },
+  ressemble: {
+    ipa: 'r' + IPA.SCHWA + 's' + IPA.NASAL_A + 'bl' + IPA.SCHWA,
+    rule: Rules.EXCEPTION,
+  },
+  secret: {
+    ipa: 's' + IPA.SCHWA + 'k' + IPA.FLIPPED_R + IPA.OPEN_E,
+    rule: Rules.EXCEPTION + ' ' + Notes.FINAL_E_HALFCLOSED,
   },
   solennelle: {
     ipa: 'sɔlanεlə',

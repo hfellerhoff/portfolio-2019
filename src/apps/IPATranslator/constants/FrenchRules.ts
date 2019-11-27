@@ -88,6 +88,10 @@ const Rules = {
   OY: `'oy' vowel clusters are transcribed as [${IPA.W_GLIDE +
     IPA.BRIGHT_A +
     IPA.J_GLIDE}].`,
+  RE_PREFIX: `All '-re' prefixes are transcribed as [${IPA.FLIPPED_R +
+    IPA.SCHWA}].`,
+  INITIAL_REST: `Inital 'rest-' and 'resp-' letter clusters are transcribed with an open [${IPA.OPEN_E}].`,
+  INTERCONSONANT_SCHWA: `An 'e' vowel in between two consonants and followed by a vowel is transcribed as [${IPA.SCHWA}].`,
 };
 
 /*
@@ -99,6 +103,7 @@ Rules to implement:
 - Nasals
 - No final consonant on multiple silent consonants (ex. doigts)
 - Figure out rule with (joie)
+- Verb ending '-ent' is a schwa
 */
 
 export default Rules;

@@ -189,7 +189,44 @@ const ParseFrench = (text: string) => {
         }
         break;
       case 'r':
-        if (nextLetter === 'r') {
+        // Inital -rest
+        if (
+          isEndOfSentence(previousPhoneme) &&
+          nextLetter === 'e' &&
+          nextlettersecond === 's' &&
+          nextletterthird === 't'
+        ) {
+          console.log(previousPhoneme);
+          phoneme = {
+            text: 'rest',
+            ipa: IPA.FLIPPED_R + IPA.OPEN_E + IPA.S + IPA.T,
+            rule: Rules.INITIAL_REST,
+          };
+          indexToAdd = 3;
+        }
+        // Inital -resp
+        else if (
+          isEndOfSentence(previousPhoneme) &&
+          nextLetter === 'e' &&
+          nextlettersecond === 's' &&
+          nextletterthird === 'p'
+        ) {
+          phoneme = {
+            text: 'resp',
+            ipa: IPA.FLIPPED_R + IPA.OPEN_E + IPA.S + IPA.P,
+            rule: Rules.INITIAL_REST,
+          };
+          indexToAdd = 3;
+        }
+        // -re prefix
+        else if (isEndOfSentence(previousPhoneme) && nextLetter === 'e') {
+          phoneme = {
+            text: 're',
+            ipa: IPA.FLIPPED_R + IPA.SCHWA,
+            rule: Rules.RE_PREFIX,
+          };
+          indexToAdd = 1;
+        } else if (nextLetter === 'r') {
           phoneme = {
             text: 'rr',
             ipa: IPA.FLIPPED_R,
@@ -569,8 +606,17 @@ const ParseFrench = (text: string) => {
         };
         break;
       case 'e':
-        // ei
         if (
+          isConsonant(previousPhoneme) &&
+          isConsonant(nextLetter) &&
+          isVowel(nextlettersecond)
+        ) {
+          phoneme = {
+            text: 'e',
+            ipa: IPA.SCHWA,
+            rule: Rules.INTERCONSONANT_SCHWA,
+          };
+        } else if (
           nextLetter === 'i' &&
           !isGlideFollowing(
             letter,
@@ -580,6 +626,7 @@ const ParseFrench = (text: string) => {
             nextletterfourth
           )
         ) {
+          // ei
           phoneme = {
             text: 'ei',
             ipa: IPA.OPEN_E,

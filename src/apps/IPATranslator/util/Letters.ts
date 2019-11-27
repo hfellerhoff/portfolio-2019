@@ -19,6 +19,8 @@ const Letters = {
     'q',
     'w',
     'r',
+    IPA.FRICATIVE_C,
+    IPA.FRICATIVE_G,
     IPA.FLIPPED_R,
     IPA.J_GLIDE,
     IPA.W_GLIDE,

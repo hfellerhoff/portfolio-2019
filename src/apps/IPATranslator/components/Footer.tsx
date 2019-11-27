@@ -1,45 +1,24 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import CoffeeButton from './CoffeeButton';
+import { Link } from 'react-router-dom';
 
 interface Props {}
 
 const Footer: React.FC<Props> = () => {
   return (
-    <div className='ipa footer container'>
-      <div className='ipa footer content-container'>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <img
-            alt='Logo'
-            src={require('../../../images/websitelogo.png')}
-            className='ipa logo'
-          />
-
-          <h3 className='ipa footer text'>Built by</h3>
-          <Link className='ipa footer link' to='/'>
-            Henry Fellerhoff
-          </Link>
-        </div>
-        <div>
-          <a
-            className='bmc-button'
-            target='_blank noopener noreferrer'
-            href='https://www.buymeacoffee.com/henryfellerhoff'
-          >
-            <img
-              src='https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg'
-              alt='Buy me a coffee'
-            />
-            <span style={{ marginLeft: 15, fontSize: 19 }}>
-              Buy me a coffee
-            </span>
-          </a>
-        </div>
+    <div className='ipa__landing-page__footer'>
+      <Link to='/' className='ipa__landing-page__footer-logo-container'>
+        <img
+          alt='Logo'
+          src={require('../../../images/websitelogo.png')}
+          className='ipa__landing-page__footer-logo'
+        />
+        <h3 className='ipa__landing-page__footer-name'>
+          Built by Henry Fellerhoff
+        </h3>
+      </Link>
+      <div className='ipa__landing-page__footer-coffee-container'>
+        <CoffeeButton />
       </div>
     </div>
   );

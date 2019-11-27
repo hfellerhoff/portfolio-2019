@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './App.css';
 import Portfolio from './Portfolio';
@@ -7,10 +7,10 @@ import IPATranslator from './apps/IPATranslator/App';
 
 const App = () => {
   return (
-    <Router>
-      <Portfolio path='/' />
-      <IPATranslator path='/ipa' />
-    </Router>
+    <BrowserRouter>
+      <Route exact path='/' component={Portfolio} />
+      <Route path='/ipa' component={IPATranslator} />
+    </BrowserRouter>
   );
 };
 

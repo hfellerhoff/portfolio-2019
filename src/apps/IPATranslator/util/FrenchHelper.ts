@@ -4,7 +4,7 @@ const PRONOUNCED_CONSONANTS = ['c', 'r', 'f', 'l'];
 
 export const isPronouncedConsonant = (consonant: string, isFinal: boolean) => {
   if (isFinal) {
-    return ['c', 'r', 'f', 'l'].indexOf(consonant.toLowerCase()) !== -1;
+    return PRONOUNCED_CONSONANTS.indexOf(consonant.toLowerCase()) !== -1;
   } else {
     return isConsonant(consonant);
   }
