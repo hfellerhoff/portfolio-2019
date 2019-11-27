@@ -37,17 +37,14 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
   const [shouldShowOutput, setShouldShowOutput] = useState(true);
   const [isPDFCreated, setIsPDFCreated] = useState(true);
 
-  const parseText = () => {
+  const parseText = (text: string) => {
     switch (language as Languages) {
       case Languages.Latin:
-        setResult(parseLatin(inputText));
-        break;
+        return parseLatin(text);
       case Languages.French:
-        setResult(parseFrench(inputText));
-        break;
+        return parseFrench(text);
       default:
-        setResult(parseLatin(inputText));
-        break;
+        return parseLatin(text);
     }
   };
 
@@ -74,7 +71,8 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
   };
 
   useEffect(() => {
-    parseText();
+    setResult(parseText(inputText));
+    // eslint-disable-next-line
   }, [inputText]);
 
   if (language in Languages) {
