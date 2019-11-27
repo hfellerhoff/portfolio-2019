@@ -102,6 +102,10 @@ const Rules = {
   FINAL_VERB_AIENT:
     `Final '-ient' verb endings are transcribed as [${IPA.OPEN_E}].` +
     Notes.FINAL_E_HALFCLOSED,
+  NASAL_EAMN_CONSONANT: `'am', 'em', 'an', and 'en' letter groups followed by a consonant (except m, n, and h) are transcribed as [${IPA.NASAL_A}].`,
+  FINAL_AN: `Final 'an' letter groups are transcribed as [${IPA.NASAL_A}].`,
+  NASAL_ONM_CONSONANT: `'on' and 'om' letter groups followed by a consonant (except m, n, and h) are transcribed as [${IPA.NASAL_O}].`,
+  FINAL_ONM_CONSONANT: `Final 'on' and 'om' letter groups are transcribed as [${IPA.NASAL_O}].`,
 };
 
 /*

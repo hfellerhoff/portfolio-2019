@@ -12,7 +12,11 @@ import { IPA, Result, Phoneme } from '../constants/Interfaces';
 import Rules from '../constants/FrenchRules';
 import Exceptions from '../constants/FrenchExceptions';
 import Notes from '../constants/FrenchNotes';
-import { isPronouncedConsonant, isGlideFollowing } from './FrenchHelper';
+import {
+  isPronouncedConsonant,
+  isGlideFollowing,
+  isNasalCanceling,
+} from './FrenchHelper';
 
 const parseFrench = (text: string) => {
   const charArray = getCharArray(text);
@@ -566,6 +570,28 @@ const parseFrench = (text: string) => {
             rule: Rules.SINGLE_A + Notes.GLIDE_FOLLOWING,
           };
         }
+        // -am and -an nasal
+        else if (
+          (nextLetter === 'm' || nextLetter === 'n') &&
+          isConsonant(nextlettersecond) &&
+          !isNasalCanceling(nextlettersecond)
+        ) {
+          phoneme = {
+            text: 'a' + nextLetter,
+            ipa: IPA.NASAL_A,
+            rule: Rules.NASAL_EAMN_CONSONANT,
+          };
+          indexToAdd = 1;
+        }
+        // final -an nasal
+        else if (nextLetter === 'n' && isEndOfSentence(nextlettersecond)) {
+          phoneme = {
+            text: 'an',
+            ipa: IPA.NASAL_A,
+            rule: Rules.NASAL_EAMN_CONSONANT,
+          };
+          indexToAdd = 1;
+        }
         // Final -aient verb
         else if (
           nextLetter === 'i' &&
@@ -677,6 +703,19 @@ const parseFrench = (text: string) => {
             text: 'ei',
             ipa: IPA.OPEN_E,
             rule: Rules.EI,
+          };
+          indexToAdd = 1;
+        }
+        // -em and -en nasal
+        else if (
+          (nextLetter === 'm' || nextLetter === 'n') &&
+          isConsonant(nextlettersecond) &&
+          !isNasalCanceling(nextlettersecond)
+        ) {
+          phoneme = {
+            text: 'e' + nextLetter,
+            ipa: IPA.NASAL_A,
+            rule: Rules.NASAL_EAMN_CONSONANT,
           };
           indexToAdd = 1;
         }
@@ -1128,8 +1167,33 @@ const parseFrench = (text: string) => {
 
         break;
       case 'o':
-        // final -oeu + final silent consonant
+        // -om and -on nasal
         if (
+          (nextLetter === 'm' || nextLetter === 'n') &&
+          isConsonant(nextlettersecond) &&
+          !isNasalCanceling(nextlettersecond)
+        ) {
+          phoneme = {
+            text: 'o' + nextLetter,
+            ipa: IPA.NASAL_O,
+            rule: Rules.NASAL_ONM_CONSONANT,
+          };
+          indexToAdd = 1;
+        }
+        // Final -om and -on nasal
+        else if (
+          (nextLetter === 'm' || nextLetter === 'n') &&
+          isEndOfSentence(nextlettersecond)
+        ) {
+          phoneme = {
+            text: 'o' + nextLetter,
+            ipa: IPA.NASAL_O,
+            rule: Rules.FINAL_ONM_CONSONANT,
+          };
+          indexToAdd = 1;
+        }
+        // final -oeu + final silent consonant
+        else if (
           nextLetter === 'e' &&
           nextlettersecond === 'u' &&
           nextletterthird !== 'c' &&

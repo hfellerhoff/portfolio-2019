@@ -17,6 +17,10 @@ const Rules = {
   AVOIR: `Conjugated forms of 'avoir' are transcribed with a [${IPA.CLOSED_Y}].`,
   MEDIAL_ILL: `This word is an exception, as it is not transcribed with a [${IPA.J_GLIDE}] as typically found in words with a medial 'ill'.`,
   DARK_OY_A: `While not critical for Lyric Diction, this word is an exception, as it transcribes the bright [${IPA.BRIGHT_A}] from the 'oi' of the word as a dark [${IPA.DARK_A}].`,
+  PRONOUNCED_NASAL_N: `This word is an exception, as the 'n' after the nasal is still pronounced.`,
+  NASAL_TWO_N: `This word is an exception, as it has a double 'n' and still has a nasal.`,
+  NO_NASAL: `This word is an exception, as it is not nasal despite transcription rules indicating it should be.`,
+  UNUSAL_NASAL: `This word is an exception, as it is nasal despite transcription rules indicating it shouldn't be.`,
 };
 
 const MerVerExceptions: ExceptionDictionary = {
@@ -300,6 +304,64 @@ const MiscExceptions: ExceptionDictionary = {
   },
 };
 
+const NasalExceptions: ExceptionDictionary = {
+  enivré: {
+    ipa: IPA.NASAL_A + 'niv' + IPA.FLIPPED_R + 'e',
+    rule: Rules.PRONOUNCED_NASAL_N,
+  },
+  enneigé: {
+    ipa: IPA.NASAL_A + 'n(e)' + IPA.FRICATIVE_G + 'e',
+    rule: Rules.NASAL_TWO_N,
+  },
+  ennui: {
+    ipa: IPA.NASAL_A + 'n' + IPA.Y_GLIDE + 'i',
+    rule: Rules.NASAL_TWO_N,
+  },
+  amen: {
+    ipa: 'am' + IPA.OPEN_E + 'n',
+    rule: Rules.NO_NASAL,
+  },
+  carmen: {
+    ipa: 'ka' + IPA.FLIPPED_R + 'm' + IPA.OPEN_E + 'n',
+    rule: Rules.NO_NASAL,
+  },
+  en: {
+    ipa: IPA.NASAL_A,
+    rule: Rules.UNUSAL_NASAL,
+  },
+  encens: {
+    ipa: IPA.NASAL_A + 's' + IPA.NASAL_A,
+    rule: Rules.EXCEPTION,
+  },
+  gens: {
+    ipa: IPA.FRICATIVE_G + IPA.NASAL_A,
+    rule: Rules.EXCEPTION,
+  },
+  poulenc: {
+    ipa: 'pul' + IPA.NASAL_E + 'k',
+    rule: Rules.EXCEPTION,
+  },
+  album: {
+    ipa: 'alb' + IPA.OPEN_O + 'm',
+    rule: Rules.NO_NASAL,
+  },
+  aquarium: {
+    ipa: 'aka' + IPA.FLIPPED_R + IPA.J_GLIDE + IPA.OPEN_O + 'm',
+    rule: Rules.NO_NASAL,
+  },
+  géranium: {
+    ipa:
+      IPA.FRICATIVE_G +
+      'e' +
+      IPA.FLIPPED_R +
+      'an' +
+      IPA.J_GLIDE +
+      IPA.OPEN_O +
+      'm',
+    rule: Rules.NO_NASAL,
+  },
+};
+
 const Exceptions: ExceptionDictionary = {
   ...MerVerExceptions,
   ...OpenErExceptions,
@@ -308,6 +370,7 @@ const Exceptions: ExceptionDictionary = {
   ...AvoirExceptions,
   ...MedialIllExceptions,
   ...DarkOyAExceptions,
+  ...NasalExceptions,
   ...MiscExceptions,
 };
 
