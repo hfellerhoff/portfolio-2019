@@ -27,7 +27,6 @@ const TextInput: React.FC<Props> = ({
   const textareaHeight = isWidthSmallEnough
     ? displayHeight * (1 / 2.95)
     : displayHeight;
-  console.log(width);
 
   const visibleStyle: CSSProperties = {
     height: textareaHeight,

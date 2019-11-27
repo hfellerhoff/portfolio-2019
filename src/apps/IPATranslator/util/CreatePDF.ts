@@ -1,6 +1,8 @@
 import { Result, Languages } from '../constants/Interfaces';
 import jsPDF from 'jspdf';
 import { Charis } from '../constants/fonts/CharisSIL-R-normal';
+import TrebuchetMS from '../constants/fonts/trebuchet-ms-normal';
+import imageData from '../assets/logo_bw';
 
 const createPDFFromResult = (language: Languages, result: Result) => {
   const pdf = new jsPDF();
@@ -12,16 +14,34 @@ const createPDFFromResult = (language: Languages, result: Result) => {
   const titleBottomMargin = 15;
   const ipaLineSpacing = 5;
   const fullLineSpacing = 15;
+  const imageHeight = 13;
+  const imageWidth = 10;
 
   pdf.addFileToVFS('Charis.ttf', Charis);
   pdf.addFont('Charis.ttf', 'Charis', 'normal');
 
+  pdf.addFileToVFS('Trebuchet-MS.ttf', TrebuchetMS);
+  pdf.addFont('Trebuchet-MS.ttf', 'Trebuchet-MS', 'normal');
+
   pdf.setFontSize(18);
   pdf.setFont('Helvetica', 'bold');
-  pdf.text(`Open IPA - ${language} Language Transcription`, startX, startY);
+  pdf.text(
+    `Open IPA — ${language} Language Transcription`,
+    startX + imageWidth + 3,
+    startY
+  );
 
-  pdf.setFontSize(14);
-  pdf.setFont('Helvetica', 'normal');
+  pdf.addImage(
+    imageData,
+    'PNG',
+    startX,
+    startY - imageHeight / 1.5,
+    imageWidth,
+    imageHeight
+  );
+
+  pdf.setFontSize(12);
+  pdf.setFont('Trebuchet-MS', 'normal');
   pdf.text(`https://www.henryfellerhoff.com/ipa`, startX, footerY);
 
   pdf.setFontSize(14);
@@ -37,7 +57,7 @@ const createPDFFromResult = (language: Languages, result: Result) => {
         }
       });
       if (textLine.length > maxLineLength || ipaLine.length > maxLineLength) {
-        pdf.setFont('Helvetica', 'bold');
+        pdf.setFont('Trebuchet-MS', 'normal');
         pdf.text(textLine, startX, y);
         pdf.setFont('Charis', 'normal');
         pdf.text(ipaLine, startX, y + ipaLineSpacing);
