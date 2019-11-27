@@ -34,6 +34,18 @@
   font-size: 48px;
   font-weight: 400;
   color: $offwhite;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 44px;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 40px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 36px;
+  }
+
+  transition: font-size 0.3s ease-in-out;
 }
 
 .ipa__transcription__note {

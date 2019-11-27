@@ -16,7 +16,7 @@ const Demonstration: React.FC<Props> = () => {
     <div className='ipa__landing-page__demonstration'>
       <div className='ipa__landing-page__demonstration-container-left'>
         <h1 className='ipa__landing-page__demonstration-title'>
-          New to Open IPA?
+          Why Open IPA?
         </h1>
         <p className='ipa__landing-page__demonstration-description'>
           Open IPA features text to IPA transcription in real-time. That means
