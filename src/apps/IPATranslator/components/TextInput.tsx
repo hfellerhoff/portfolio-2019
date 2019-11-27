@@ -25,7 +25,7 @@ const TextInput: React.FC<Props> = ({
   const className = `ipa__text-input--${theme}`;
   const isWidthSmallEnough = width <= 800 ? true : false;
   const textareaHeight = isWidthSmallEnough
-    ? displayHeight * (3 / 8)
+    ? displayHeight * (1 / 2.95)
     : displayHeight;
   console.log(width);
 
