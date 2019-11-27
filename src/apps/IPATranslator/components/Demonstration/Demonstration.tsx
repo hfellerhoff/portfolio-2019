@@ -37,7 +37,7 @@ const Demonstration: React.FC<Props> = () => {
             inputText={inputText}
             setInputText={setInputText}
             theme='dark'
-            height={resultHeight}
+            displayHeight={resultHeight}
           />
           <h3 className='ipa__landing-page__demonstration__input-title'>
             {`${language} Text Input`}

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import Rules from '../../constants/LatinRules';
 import { Word, Line, Result } from '../../constants/Interfaces';
 
 import './ResultDisplay.scss';
+import useWindowDimensions from '../UseWindowDimensions';
 
 type PhonemeProps = {
   text: string;
@@ -94,15 +95,30 @@ type DisplayProps = {
   result: Result;
   theme?: 'light' | 'dark';
   setHeight?: (height: number) => void;
+  shouldHide?: boolean;
 };
 const ResultElement = ({
   result,
   theme = 'light',
   setHeight,
+  shouldHide,
 }: DisplayProps) => {
   const [displayRef, setDisplayRef] = useState<HTMLDivElement>(
     document.createElement('div')
   );
+
+  const { width } = useWindowDimensions();
+  const isWidthSmallEnough = width <= 800 ? true : false;
+  const visibleStyle: CSSProperties = {
+    visibility: 'visible',
+  };
+  const hiddenStyle: CSSProperties = {
+    height: 100,
+    visibility: 'hidden',
+    margin: -170,
+  };
+
+  const style = isWidthSmallEnough && shouldHide ? hiddenStyle : visibleStyle;
 
   const lineElements: JSX.Element[] = [];
   result.lines.forEach((line, index) => {
@@ -124,6 +140,7 @@ const ResultElement = ({
       id='result'
       className={className}
       ref={display => setDisplayRef(display ? display : displayRef)}
+      style={style}
     >
       {lineElements}
     </div>

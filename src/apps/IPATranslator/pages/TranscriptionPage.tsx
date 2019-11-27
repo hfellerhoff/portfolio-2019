@@ -32,6 +32,8 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
     ],
   });
   const [resultHeight, setResultHeight] = useState(0);
+  const [shouldShowInput, setShouldShowInput] = useState(true);
+  const [shouldShowOutput, setShouldShowOutput] = useState(true);
 
   const parseText = () => {
     switch (language as Languages) {
@@ -71,20 +73,38 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
         <p className='ipa__transcription__note'>{getNote()}</p>
         <div className='ipa__transcription__input-container'>
           <div className='ipa__transcription__input-container-left'>
-            <h3 className='ipa__transcription__input-title'>Text Input</h3>
+            <div className='ipa__transcription__input-container-top'>
+              <h3 className='ipa__transcription__input-title'>Text Input</h3>
+              <button
+                className='ipa__transcription__input-hide-button'
+                onClick={() => setShouldShowInput(!shouldShowInput)}
+              >
+                {shouldShowInput ? 'Hide' : 'Show'}
+              </button>
+            </div>
             <TextInput
               inputText={inputText}
               setInputText={setInputText}
-              height={resultHeight}
+              displayHeight={resultHeight}
+              shouldHide={!shouldShowInput}
             />
           </div>
           <div className='ipa__transcription__input-container-right'>
-            <h3 className='ipa__transcription__input-title'>
-              IPA Transcription
-            </h3>
+            <div className='ipa__transcription__input-container-top'>
+              <h3 className='ipa__transcription__input-title'>
+                IPA Transcription
+              </h3>
+              <button
+                className='ipa__transcription__input-hide-button'
+                onClick={() => setShouldShowOutput(!shouldShowOutput)}
+              >
+                {shouldShowOutput ? 'Hide' : 'Show'}
+              </button>
+            </div>
             <ResultDisplay
               result={result}
               setHeight={height => setResultHeight(height)}
+              shouldHide={!shouldShowOutput}
             />
           </div>
         </div>
