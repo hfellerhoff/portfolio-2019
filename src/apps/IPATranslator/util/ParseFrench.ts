@@ -14,7 +14,7 @@ import Exceptions from '../constants/FrenchExceptions';
 import Notes from '../constants/FrenchNotes';
 import { isPronouncedConsonant, isGlideFollowing } from './FrenchHelper';
 
-const ParseFrench = (text: string) => {
+const parseFrench = (text: string) => {
   const charArray = getCharArray(text);
 
   let result: Result = {
@@ -960,7 +960,6 @@ const ParseFrench = (text: string) => {
           nextlettersecond === 'l' &&
           !isEndOfSentence(nextletterthird)
         ) {
-          console.log('ran');
           if (isConsonant(previousPhoneme)) {
             phoneme = {
               text: 'ill',
@@ -1301,12 +1300,10 @@ const ParseFrench = (text: string) => {
     // Check for exceptions
     if (startOfNewWord) {
       const [word, newIndex] = getNextWord(index, charArray);
-      let wordNoPunctuation = '';
-      for (let p = 0; p < word.length; p++) {
-        if (!isPunctuation(charArray[p])) {
-          wordNoPunctuation += word[p];
-        }
-      }
+      const wordNoPunctuation = getCharArray(word)
+        .filter(char => !isPunctuation(char))
+        .join('');
+
       if (wordNoPunctuation in Exceptions) {
         phoneme = {
           ...Exceptions[wordNoPunctuation],
@@ -1398,7 +1395,7 @@ const ParseFrench = (text: string) => {
   return result;
 };
 
-export default ParseFrench;
+export default parseFrench;
 // Med
 // else if (nextLetter === 'u' && !isEndOfSentence(previousPhoneme) && !isEndOfSentence(nextlettersecond)) {
 //   phoneme = {
