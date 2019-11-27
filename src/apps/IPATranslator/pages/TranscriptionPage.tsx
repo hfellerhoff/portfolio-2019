@@ -5,6 +5,7 @@ import TextInput from '../components/TextInput';
 import ResultDisplay from '../components/ResultDisplay/ResultDisplay';
 import parseLatin from '../util/ParseLatin';
 import parseFrench from '../util/ParseFrench';
+import { PulseLoader } from 'react-spinners';
 
 import './TranscriptionPage.scss';
 import createPDFFromResult from '../util/CreatePDF';
@@ -34,6 +35,7 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
   const [resultHeight, setResultHeight] = useState(0);
   const [shouldShowInput, setShouldShowInput] = useState(true);
   const [shouldShowOutput, setShouldShowOutput] = useState(true);
+  const [isPDFCreated, setIsPDFCreated] = useState(true);
 
   const parseText = () => {
     switch (language as Languages) {
@@ -58,6 +60,17 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
       default:
         return '';
     }
+  };
+
+  const createPDF = () => {
+    setIsPDFCreated(false);
+    setTimeout(() => {
+      createPDFFromResult(language as Languages, result).then(() =>
+        setIsPDFCreated(true)
+      );
+    }, 400);
+    // I know this whole function is kinda gross, but for some reason
+    // this is more responsive than having no delay whatsoever
   };
 
   useEffect(() => {
@@ -110,10 +123,14 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
         </div>
         <div className='ipa__transcription__export-container'>
           <button
-            onClick={() => createPDFFromResult(language as Languages, result)}
+            onClick={() => createPDF()}
             className='ipa__transcription__export-button'
           >
-            Export as PDF
+            {isPDFCreated ? (
+              'Export as PDF'
+            ) : (
+              <PulseLoader color='white' size={10} />
+            )}
           </button>
           <div style={{ width: 15, height: 15 }}></div>
           <button
