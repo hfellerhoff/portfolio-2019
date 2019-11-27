@@ -16,7 +16,7 @@ const LandingPage: React.FC<Props> = () => {
           Free, informative IPA transcription for Lyric Diction
         </h3>
         <h4 className='ipa__landing-page__hero__call-to-action'>
-          Get started with
+          Get started with:
         </h4>
         <div className='ipa__landing-page__hero__button-container'>
           <LanguageSelectButton language={Languages.Latin} status='active' />
