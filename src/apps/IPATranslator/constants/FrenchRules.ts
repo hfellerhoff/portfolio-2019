@@ -1,4 +1,5 @@
 import { IPA } from './Interfaces';
+import Notes from './FrenchNotes';
 
 const Rules = {
   NONE: ``,
@@ -92,6 +93,15 @@ const Rules = {
     IPA.SCHWA}].`,
   INITIAL_REST: `Inital 'rest-' and 'resp-' letter clusters are transcribed with an open [${IPA.OPEN_E}].`,
   INTERCONSONANT_SCHWA: `An 'e' vowel in between two consonants and followed by a vowel is transcribed as [${IPA.SCHWA}].`,
+  FINAL_VERB_ENT: `Final '-ent' verb endings are transcribed as [${IPA.SCHWA}]. If this word is not a verb, it is transcribed as [${IPA.NASAL_A}].`,
+  FAIS_VOWEL: `The verb 'fais' followed by a vowel is transcribed as [${IPA.F +
+    IPA.SCHWA +
+    IPA.Z}].`,
+  FINAL_VERB_IENT: `Final '-ient' verb endings are transcribed as [${IPA.J_GLIDE +
+    IPA.NASAL_E}].`,
+  FINAL_VERB_AIENT:
+    `Final '-ient' verb endings are transcribed as [${IPA.OPEN_E}].` +
+    Notes.FINAL_E_HALFCLOSED,
 };
 
 /*

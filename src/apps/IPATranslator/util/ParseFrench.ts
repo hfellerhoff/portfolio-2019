@@ -71,6 +71,11 @@ const parseFrench = (text: string) => {
       nextletterfifth = charArray[index + 5];
     }
 
+    let nextlettersixth = '';
+    if (index < charArray.length - 6) {
+      nextletterfifth = charArray[index + 6];
+    }
+
     switch (letter) {
       // CONSONANTS
       case 'c':
@@ -422,7 +427,19 @@ const parseFrench = (text: string) => {
         }
         break;
       case 'f':
-        if (nextLetter === 'f') {
+        if (
+          nextLetter === 'a' &&
+          nextlettersecond === 'i' &&
+          nextletterthird === 's' &&
+          isVowel(nextletterfourth)
+        ) {
+          phoneme = {
+            text: 'fais',
+            ipa: IPA.F + IPA.SCHWA + IPA.Z,
+            rule: Rules.FAIS_VOWEL,
+          };
+          indexToAdd = 3;
+        } else if (nextLetter === 'f') {
           phoneme = {
             text: 'ff',
             ipa: IPA.F,
@@ -534,7 +551,36 @@ const parseFrench = (text: string) => {
 
       // VOWELS
       case 'a':
-        if (nextLetter === 'i' && isEndOfSentence(nextlettersecond)) {
+        if (
+          isGlideFollowing(
+            letter,
+            nextLetter,
+            nextlettersecond,
+            nextletterthird,
+            nextletterfourth
+          )
+        ) {
+          phoneme = {
+            text: 'a',
+            ipa: IPA.BRIGHT_A,
+            rule: Rules.SINGLE_A + Notes.GLIDE_FOLLOWING,
+          };
+        }
+        // Final -aient verb
+        else if (
+          nextLetter === 'i' &&
+          nextlettersecond === 'e' &&
+          nextletterthird === 'n' &&
+          nextletterfourth === 't' &&
+          isEndOfSentence(nextletterfifth)
+        ) {
+          phoneme = {
+            text: 'aient',
+            ipa: IPA.OPEN_E,
+            rule: Rules.FINAL_VERB_AIENT,
+          };
+          indexToAdd = 4;
+        } else if (nextLetter === 'i' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'ai',
             ipa: IPA.CLOSED_E,
@@ -555,7 +601,7 @@ const parseFrench = (text: string) => {
             rule: Rules.AY,
           };
           indexToAdd = 1;
-        } else if (nextLetter === 's') {
+        } else if (nextLetter === 's' && isEndOfSentence(nextlettersecond)) {
           phoneme = {
             text: 'as',
             ipa: IPA.BRIGHT_A,
@@ -656,6 +702,19 @@ const parseFrench = (text: string) => {
           };
           indexToAdd = 1;
         }
+        // final verb ending -ent
+        else if (
+          nextLetter === 'n' &&
+          nextlettersecond === 't' &&
+          isEndOfSentence(nextletterthird)
+        ) {
+          phoneme = {
+            text: 'ent',
+            ipa: IPA.SCHWA,
+            rule: Rules.FINAL_VERB_ENT,
+          };
+          indexToAdd = 2;
+        }
         // final -eu + final silent consonant
         else if (
           nextLetter === 'u' &&
@@ -700,11 +759,11 @@ const parseFrench = (text: string) => {
             isEndOfSentence(nextletterthird)
           ) ||
             isGlideFollowing(
-              letter,
               nextLetter,
               nextlettersecond,
               nextletterthird,
-              nextletterfourth
+              nextletterfourth,
+              nextletterfifth
             ))
         ) {
           phoneme = {
@@ -901,6 +960,22 @@ const parseFrench = (text: string) => {
             rule: Rules.EU_PRONOUNCEDCONSONSANT,
           };
           indexToAdd = 1;
+        } else if (
+          nextLetter === 'u' &&
+          isGlideFollowing(
+            nextLetter,
+            nextlettersecond,
+            nextletterthird,
+            nextletterfourth,
+            nextletterfifth
+          )
+        ) {
+          phoneme = {
+            text: 'œu',
+            ipa: IPA.OPEN_MIXED_O,
+            rule: Rules.EU_PRONOUNCEDCONSONSANT,
+          };
+          indexToAdd = 1;
         }
         // œ + pronounced consonant
         else if (
@@ -953,8 +1028,22 @@ const parseFrench = (text: string) => {
 
         break;
       case 'i':
-        // Medial ill
+        // Final -ient verb
         if (
+          nextLetter === 'e' &&
+          nextlettersecond === 'n' &&
+          nextletterthird === 't' &&
+          isEndOfSentence(nextletterfourth)
+        ) {
+          phoneme = {
+            text: 'ient',
+            ipa: IPA.J_GLIDE + IPA.NASAL_E,
+            rule: Rules.FINAL_VERB_IENT,
+          };
+          indexToAdd = 4;
+        }
+        // Medial ill
+        else if (
           !isEndOfSentence(previousPhoneme) &&
           nextLetter === 'l' &&
           nextlettersecond === 'l' &&
@@ -1065,11 +1154,11 @@ const parseFrench = (text: string) => {
             isEndOfSentence(nextletterthird)
           ) ||
             isGlideFollowing(
-              nextLetter,
               nextlettersecond,
               nextletterthird,
               nextletterfourth,
-              nextletterfifth
+              nextletterfifth,
+              nextlettersixth
             ))
         ) {
           phoneme = {
@@ -1236,7 +1325,16 @@ const parseFrench = (text: string) => {
             rule: Rules.MEDIAL_UE,
           };
           indexToAdd = 1;
-        } else if (isVowel(nextLetter)) {
+        } else if (
+          isVowel(nextLetter) &&
+          !isGlideFollowing(
+            letter,
+            nextLetter,
+            nextlettersecond,
+            nextletterthird,
+            nextletterfourth
+          )
+        ) {
           phoneme = {
             text: 'u',
             ipa: IPA.Y_GLIDE,
