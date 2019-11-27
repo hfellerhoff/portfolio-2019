@@ -82,6 +82,17 @@ const TranscriptionPage: React.FC<RouteComponentProps<Props>> = ({
           {language + ' Transcription'}
         </h1>
         <p className='ipa__transcription__note'>{getNote()}</p>
+        <p className='ipa__transcription__note' style={{ marginTop: 10 }}>
+          Open IPA is a new service, so our database of exceptions is limited.
+          If you find a transcription error or exception, please reach out to
+          <a
+            href={`mailto:henryfellerhoff+openipa@gmail.com?subject=Feedback for Open IPA`}
+          >
+            <span className='ipa__transcription__email'>
+              henryfellerhoff@gmail.com.
+            </span>
+          </a>
+        </p>
         <div className='ipa__transcription__input-container'>
           <div className='ipa__transcription__input-container-left'>
             <div className='ipa__transcription__input-container-top'>

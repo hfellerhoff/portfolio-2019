@@ -62,6 +62,20 @@
   color: $offwhite;
 }
 
+.ipa__transcription__email {
+  margin-left: 5px;
+  font-size: 18px;
+  font-weight: 300;
+  color: $offwhite;
+  border-bottom: 1.5px solid transparent;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.ipa__transcription__email:hover {
+  border-bottom: 1.5px solid $white;
+}
+
 .ipa__transcription__input-container-top {
   display: flex;
   align-items: center;

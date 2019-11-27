@@ -1,4 +1,5 @@
 import { isConsonant, isEndOfSentence, isVowel } from './Helper';
+import Letters from './Letters';
 
 const PRONOUNCED_CONSONANTS = ['c', 'r', 'f', 'l'];
 
@@ -31,4 +32,8 @@ export const isGlideFollowing = (
     isVowel(letter) && nextletter === 'i' && nextlettersecond === 'l';
 
   return isMedialILL || isVowelIL;
+};
+
+export const isNasalCanceling = (char: string) => {
+  return ['m', 'n', 'h', ...Letters.vowels].indexOf(char.toLowerCase()) !== -1;
 };
