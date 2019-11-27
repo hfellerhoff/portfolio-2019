@@ -13,6 +13,16 @@ import './App.css';
 function Portfolio() {
   const projects = [
     {
+      filename: 'openipa.png',
+      title: 'Open IPA',
+      subtitle: 'Website / Transcription Tool',
+      description:
+        'Open IPA is a text to IPA transcription tool for Lyric Diction and vocal performance. \n' +
+        'It intelligently parses text based on a number of transcription rules, handles exceptions, and has export functionality.',
+      technologies: ['JavaScript/Typescript', 'HTML/CSS/SASS', 'React.js'],
+      tools: ['Android Studio', 'Git/GitHub'],
+    },
+    {
       filename: 'joinme.png',
       title: 'JoinMe',
       subtitle: 'Android App',

@@ -12,7 +12,11 @@
 .ipa__landing-page__hero {
   margin-top: $navbar-height;
 
-  background: $gray;
+  background: linear-gradient(
+    to left bottom,
+    $darkgray-gradient,
+    $lightgray-gradient
+  );
 
   padding-top: 80px;
   padding-bottom: 80px;
