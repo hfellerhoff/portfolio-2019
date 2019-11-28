@@ -53,7 +53,7 @@ const Letters = {
     'n',
     'm',
   ],
-  punctuation: ['.', ',', ';', "'", '!', '?', '(', ')'],
+  punctuation: ['.', ',', ';', "'", '!', '?', '(', ')', '-'],
 };
 
 export default Letters;

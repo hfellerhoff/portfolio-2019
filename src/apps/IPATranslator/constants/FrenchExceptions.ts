@@ -21,6 +21,7 @@ const Rules = {
   NASAL_TWO_N: `This word is an exception, as it has a double 'n' and still has a nasal.`,
   NO_NASAL: `This word is an exception, as it is not nasal despite transcription rules indicating it should be.`,
   UNUSAL_NASAL: `This word is an exception, as it is nasal despite transcription rules indicating it shouldn't be.`,
+  ARTICLES: `This is an article, and the final '-es' is pronounced with a closed [${IPA.CLOSED_E}].`,
 };
 
 const MerVerExceptions: ExceptionDictionary = {
@@ -238,6 +239,14 @@ const MiscExceptions: ExceptionDictionary = {
     ipa: 'e',
     rule: `'et' (French for 'and') is pronounced as [e] to make a distinction between it and 'es/est' (French for 'is'), which are pronounced [ε].`,
   },
+  es: {
+    ipa: IPA.OPEN_E,
+    rule: `'es' and 'est' (French for 'is') are pronounced as [${IPA.OPEN_E}] to make a distinction between it and 'et' (French for 'and'), which are pronounced [e].`,
+  },
+  est: {
+    ipa: IPA.OPEN_E,
+    rule: `'es' and 'est' (French for 'is') are pronounced as [${IPA.OPEN_E}] to make a distinction between it and 'et' (French for 'and'), which are pronounced [e].`,
+  },
   dessous: {
     ipa: 'd' + IPA.SCHWA + 'su',
     rule: Rules.EXCEPTION,
@@ -362,6 +371,34 @@ const NasalExceptions: ExceptionDictionary = {
   },
 };
 
+// TODO: Double check rule page 119
+const ArticleExceptions: ExceptionDictionary = {
+  ces: {
+    ipa: 'se',
+    rule: Rules.ARTICLES,
+  },
+  des: {
+    ipa: 'de',
+    rule: Rules.ARTICLES,
+  },
+  les: {
+    ipa: 'le',
+    rule: Rules.ARTICLES,
+  },
+  mes: {
+    ipa: 'me',
+    rule: Rules.ARTICLES,
+  },
+  ses: {
+    ipa: 'se',
+    rule: Rules.ARTICLES,
+  },
+  tes: {
+    ipa: 'te',
+    rule: Rules.ARTICLES,
+  },
+};
+
 const Exceptions: ExceptionDictionary = {
   ...MerVerExceptions,
   ...OpenErExceptions,
@@ -371,6 +408,7 @@ const Exceptions: ExceptionDictionary = {
   ...MedialIllExceptions,
   ...DarkOyAExceptions,
   ...NasalExceptions,
+  ...ArticleExceptions,
   ...MiscExceptions,
 };
 

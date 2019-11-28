@@ -96,7 +96,7 @@ const parseFrench = (text: string) => {
             ipa: IPA.S,
             rule: Rules.C_FRONTVOWEL,
           };
-        } else if (isBackVowel(nextLetter)) {
+        } else if (isBackVowel(nextLetter) || isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'c',
             ipa: IPA.K,
@@ -175,19 +175,13 @@ const parseFrench = (text: string) => {
         }
         break;
       case 'q':
-        if (nextLetter === 'u' && nextlettersecond !== 'e') {
+        if (nextLetter === 'u') {
           phoneme = {
             text: 'qu',
             ipa: IPA.K,
             rule: Rules.QU,
           };
           indexToAdd = 1;
-        } else if (nextLetter === 'u') {
-          phoneme = {
-            text: 'q',
-            ipa: IPA.K,
-            rule: Rules.QU,
-          };
         }
         if (isEndOfSentence(nextLetter)) {
           phoneme = {
@@ -544,13 +538,20 @@ const parseFrench = (text: string) => {
             rule: Rules.D,
           };
           indexToAdd = 1;
-        } else {
+        } else if (!isEndOfSentence(nextLetter)) {
           phoneme = {
             text: 'd',
             ipa: IPA.D,
             rule: Rules.D,
           };
+        } else {
+          phoneme = {
+            text: 'd',
+            ipa: '',
+            rule: Rules.SILENT_FINAL_CONSONANT,
+          };
         }
+
         break;
 
       // VOWELS
@@ -947,10 +948,11 @@ const parseFrench = (text: string) => {
           (nextLetter === 's' && isEndOfSentence(nextlettersecond))
         ) {
           phoneme = {
-            text: 'e',
+            text: 'e' + (nextLetter === 's' ? 's' : ''),
             ipa: IPA.SCHWA,
             rule: Rules.FINAL_E_ES,
           };
+          nextLetter === 's' ? (indexToAdd = 1) : (indexToAdd = 0);
         }
         // e + DOUBLE CONSONANT
         else if (isConsonant(nextLetter) && isConsonant(nextlettersecond)) {
@@ -1255,7 +1257,16 @@ const parseFrench = (text: string) => {
           indexToAdd = 1;
         }
         // ou + vowel
-        else if (nextLetter === 'u' && isVowel(nextlettersecond)) {
+        else if (
+          nextLetter === 'u' &&
+          isVowel(nextlettersecond) &&
+          !(
+            (nextlettersecond === 'e' && isEndOfSentence(nextletterthird)) ||
+            (nextlettersecond === 'e' &&
+              nextletterthird === 's' &&
+              isEndOfSentence(nextletterfourth))
+          )
+        ) {
           phoneme = {
             text: 'ou',
             ipa: IPA.W_GLIDE,
