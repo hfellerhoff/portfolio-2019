@@ -7,7 +7,14 @@ import Portfolio from './Portfolio';
 const App = () => {
   return (
     <BrowserRouter>
-      <Route exact path='/' component={Portfolio} />
+      <Route
+        path='/ipa'
+        component={() => {
+          window.location.href = 'https://www.openipa.org';
+          return null;
+        }}
+      />
+      <Route path='/' component={Portfolio} />
     </BrowserRouter>
   );
 };
