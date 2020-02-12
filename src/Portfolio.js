@@ -20,7 +20,7 @@ function Portfolio() {
         'Open IPA is a text to IPA transcription tool for Lyric Diction and vocal performance. \n' +
         'It intelligently parses text based on a number of transcription rules, handles exceptions, and has export functionality.',
       technologies: ['JavaScript/Typescript', 'HTML/CSS/SASS', 'React.js'],
-      tools: ['Android Studio', 'Git/GitHub'],
+      tools: ['VS Code', 'Git/GitHub'],
     },
     {
       filename: 'joinme.png',
